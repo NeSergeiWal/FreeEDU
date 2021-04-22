@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FreeEDU">
+
+	<Style x:Key="Mini-Exp_bt" TargetType="Button">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Border CornerRadius="0,30,30,0" Background="{StaticResource Mini-Exp_bt_Bg}">
+						<Label VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalAlignment="Stretch">
+							<Path Data="M0,0 L100,40 M100,40 L0,80" Stroke="White" StrokeThickness="3" Height="25" Stretch="Fill" Width="20"/>
+						</Label>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+</ResourceDictionary>

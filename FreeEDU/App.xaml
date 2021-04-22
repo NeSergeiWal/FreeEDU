@@ -1,0 +1,22 @@
+﻿<Application x:Class="FreeEDU.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FreeEDU"
+             StartupUri="View/LoginWindow.xaml">
+    <Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="Resources/Themes/MainWindowTheme.xaml"/>
+				<ResourceDictionary Source="Resources/Templates/LoginWindowTemplates/LoginWindowTemplate.xaml"/>
+				<ResourceDictionary Source="Resources/Templates/LoginWindowTemplates/Login_bt_template.xaml"/>
+				<ResourceDictionary Source="Resources/Templates/LoginWindowTemplates/Login_input_box_template.xaml"/>
+				<ResourceDictionary Source="Resources/Templates/Help_link_bt_template.xaml"/>
+				<ResourceDictionary Source="Resources/Templates/MainWindowTemplate.xaml"/>
+				<ResourceDictionary Source="Resources/Styles/LoginWindowStyles.xaml"/>
+				<ResourceDictionary Source="Resources/Styles/MainWindowStyles.xaml"/>
+				<ResourceDictionary Source="Resources/Templates/Mini-Exp_bt_template.xaml"/>
+				<ResourceDictionary Source="Resources/Templates/Menu_bt_template.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+    </Application.Resources>
+</Application>

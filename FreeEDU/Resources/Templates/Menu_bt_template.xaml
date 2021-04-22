@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FreeEDU">
+
+	<Style x:Key="Menu_bt" TargetType="Button">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Border BorderBrush="Black" BorderThickness="0,0,0,1" Margin="15,10,15,5" Background="{TemplateBinding Background}">
+						<Label HorizontalContentAlignment="Center"
+							   FontSize="18"
+							   FontWeight="Bold"
+							   Foreground="{StaticResource Menu_bt_Fg}"
+							   Content="{TemplateBinding Content}"/>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Background" Value="{StaticResource Enter_Menu_bt_Bg}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	
+</ResourceDictionary>

@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FreeEDU">
+	
+	<LinearGradientBrush x:Key="MainMenuBg" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+		<GradientStop Color="#FFEA69A6" Offset="1"/>
+		<GradientStop Color="Transparent" Offset="0.447"/>
+		<GradientStop Color="#FFF5FD72" Offset="0"/>
+	</LinearGradientBrush>
+
+	<LinearGradientBrush x:Key="WindowBg" EndPoint="0.5,1" StartPoint="0.5,0">
+		<GradientStop Color="#FFF5FD72" Offset="0"/>
+		<GradientStop Color="#FFC0F56E" Offset="0.809"/>
+	</LinearGradientBrush>
+
+	<LinearGradientBrush x:Key="TopPanelBg" EndPoint="0.5,1" StartPoint="0.5,0">
+		<GradientStop Color="#FF67237F" Offset="0"/>
+		<GradientStop Color="#FFB764D4" Offset="0.443"/>
+	</LinearGradientBrush>
+
+	<RadialGradientBrush x:Key="Mini-Exp_bt_Bg">
+		<GradientStop Color="#FFF2FD3F"/>
+		<GradientStop Color="#FF9AA400" Offset="0.768"/>
+	</RadialGradientBrush>
+
+	<SolidColorBrush x:Key="Menu_bt_Fg" Color="#52026E"/>
+
+	<RadialGradientBrush x:Key="Enter_Menu_bt_Bg">
+		<GradientStop Color="White"/>
+		<GradientStop Color="Transparent" Offset="1.2"/>
+	</RadialGradientBrush>
+
+	<LinearGradientBrush x:Key="TopUserIconBg" EndPoint="0.5,1" StartPoint="0.5,0">
+		<GradientStop Color="#FFEA69A6" Offset="0.565"/>
+		<GradientStop Color="#FFEA3A8D" Offset="0"/>
+	</LinearGradientBrush>
+
+	<LinearGradientBrush x:Key="Login_bt_Bg" EndPoint="0.5,1" StartPoint="0.5,0">
+		<GradientStop Color="#FFD50065" Offset="0"/>
+		<GradientStop Color="#FFEA69A6" Offset="0.443"/>
+	</LinearGradientBrush>
+
+</ResourceDictionary>

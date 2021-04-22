@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FreeEDU">
+
+	<Style x:Key="Login_input_box" TargetType="TextBox">
+		<Setter Property="Height" Value="30"/>
+		<Setter Property="Margin" Value="0,0,0,15"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="TextBox">
+					<Border CornerRadius="10" Background="White">
+						<ContentPresenter HorizontalAlignment="Stretch"
+										  VerticalAlignment="Stretch"
+										  Content="{TemplateBinding Text}"/>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+</ResourceDictionary>
