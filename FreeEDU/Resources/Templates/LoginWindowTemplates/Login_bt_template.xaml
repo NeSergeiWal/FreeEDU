@@ -3,10 +3,11 @@
                     xmlns:local="clr-namespace:FreeEDU">
 
 	<Style x:Key="Login_bt" TargetType="Button">
+		<Setter Property="Margin" Value="0,15,0,0"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="Button">
-					<Border Width="100" CornerRadius="10" Background="{StaticResource Login_bt_Bg}">
+					<Border Width="150" CornerRadius="10" Background="{StaticResource Login_bt_Bg}">
 						<Label	FontSize="20"
 								FontWeight="DemiBold"
 								VerticalAlignment="Stretch"

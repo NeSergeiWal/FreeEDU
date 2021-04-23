@@ -3,10 +3,16 @@
                     xmlns:local="clr-namespace:FreeEDU">
 
 	<ControlTemplate x:Key="LWTemplate" TargetType="Window">
-		<Border Background="{StaticResource WindowBg}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+		<Border BorderBrush="{StaticResource TopPanelBg}"
+				BorderThickness="1"
+				Background="{StaticResource WindowBg}"
+				Width="{TemplateBinding Width}"
+				Height="{TemplateBinding Height}">
 			<Grid Background="Transparent">
 
-				<Border Height="50" Background="{StaticResource TopPanelBg}" VerticalAlignment="Top">
+				<Border Height="50"
+						Background="{StaticResource TopPanelBg}"
+						VerticalAlignment="Top">
 					<Grid>
 
 						<TextBlock Text="{TemplateBinding Title}" HorizontalAlignment="Left"
@@ -18,11 +24,17 @@
 
 						<StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,15,0">
 
-							<Button Width="30" Height="30" WindowChrome.IsHitTestVisibleInChrome="True" Background="Yellow">
+							<Button Width="30" Height="30"
+									WindowChrome.IsHitTestVisibleInChrome="True"
+									Background="Yellow"
+									Command="{Binding MinimazeWindowCommand}">
 								<Path Data="M0,2 L6,2" Stroke="Black" StrokeThickness="1"/>
 							</Button>
 
-							<Button Width="30" Height="30" WindowChrome.IsHitTestVisibleInChrome="True" Background="Red">
+							<Button Width="30" Height="30"
+									WindowChrome.IsHitTestVisibleInChrome="True"
+									Background="Red"
+									Command="{Binding CloseWindowCommand}">
 								<Path Data="M0,1 L6,7 M0,7 L6,1" Stroke="Black" StrokeThickness="1"/>
 							</Button>
 

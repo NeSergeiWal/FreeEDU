@@ -5,13 +5,9 @@
 	<LinearGradientBrush x:Key="MainMenuBg" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
 		<GradientStop Color="#FFEA69A6" Offset="1"/>
 		<GradientStop Color="Transparent" Offset="0.447"/>
-		<GradientStop Color="#FFF5FD72" Offset="0"/>
 	</LinearGradientBrush>
 
-	<LinearGradientBrush x:Key="WindowBg" EndPoint="0.5,1" StartPoint="0.5,0">
-		<GradientStop Color="#FFF5FD72" Offset="0"/>
-		<GradientStop Color="#FFC0F56E" Offset="0.809"/>
-	</LinearGradientBrush>
+	<SolidColorBrush x:Key="WindowBg" Color="White"/>
 
 	<LinearGradientBrush x:Key="TopPanelBg" EndPoint="0.5,1" StartPoint="0.5,0">
 		<GradientStop Color="#FF67237F" Offset="0"/>
@@ -39,5 +35,7 @@
 		<GradientStop Color="#FFD50065" Offset="0"/>
 		<GradientStop Color="#FFEA69A6" Offset="0.443"/>
 	</LinearGradientBrush>
+
+	<SolidColorBrush x:Key="Brush_input_box" Color="#95256C"/>
 
 </ResourceDictionary>

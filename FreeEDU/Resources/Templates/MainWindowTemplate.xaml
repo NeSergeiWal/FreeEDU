@@ -4,7 +4,9 @@
 					xmlns:controls="clr-namespace:FreeEDU.Resources.Controls">
 	
 	<ControlTemplate x:Key="MWTemplate" TargetType="Window">
-		<Border Background="{StaticResource WindowBg}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+		<Border Background="{StaticResource WindowBg}"
+				BorderBrush="{StaticResource TopPanelBg}"
+				BorderThickness="1">
 			<Grid Background="Transparent">
 
 				<Border Height="50" Background="{StaticResource TopPanelBg}" VerticalAlignment="Top">
