@@ -7,12 +7,14 @@
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="Resources/Themes/MainWindowTheme.xaml"/>
-				<ResourceDictionary Source="Resources/Templates/LoginWindowTemplates/LoginWindowTemplate.xaml"/>
-				<ResourceDictionary Source="Resources/Templates/LoginWindowTemplates/Login_bt_template.xaml"/>
+				<ResourceDictionary Source="Resources/Templates/LoginWindowTemplates/Login_pass_box_template.xaml"/>
 				<ResourceDictionary Source="Resources/Templates/LoginWindowTemplates/Login_input_box_template.xaml"/>
+				<ResourceDictionary Source="Resources/Templates/LoginWindowTemplates/Login_bt_template.xaml"/>
 				<ResourceDictionary Source="Resources/Templates/Help_link_bt_template.xaml"/>
+				<ResourceDictionary Source="Resources/Templates/LoginWindowTemplates/LoginWindowTemplate.xaml"/>
 				<ResourceDictionary Source="Resources/Templates/MainWindowTemplate.xaml"/>
 				<ResourceDictionary Source="Resources/Styles/LoginWindowStyles.xaml"/>
+				<ResourceDictionary Source="Resources/Styles/Input_xl_heading_style.xaml"/>
 				<ResourceDictionary Source="Resources/Styles/MainWindowStyles.xaml"/>
 				<ResourceDictionary Source="Resources/Templates/Mini-Exp_bt_template.xaml"/>
 				<ResourceDictionary Source="Resources/Templates/Menu_bt_template.xaml"/>

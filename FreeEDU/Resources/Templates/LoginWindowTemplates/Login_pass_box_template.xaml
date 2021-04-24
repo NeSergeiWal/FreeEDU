@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FreeEDU">
+
+	<Style x:Key="Login_pass_box" TargetType="PasswordBox">
+		<Setter Property="Height" Value="30"/>
+		<Setter Property="Margin" Value="0,0,0,15"/>
+		<Setter Property="SnapsToDevicePixels" Value="True"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="PasswordBox">
+					<Border CornerRadius="10" BorderBrush="{StaticResource Brush_input_box}" BorderThickness="1">
+						<Grid>
+							<Rectangle StrokeThickness="1"/>
+							<PasswordBox
+									 Margin="1"
+									 BorderThickness="0"
+									 Background="Transparent"
+									 Padding="5"
+									 VerticalContentAlignment="Center"
+									 x:Name="Pass_box"/>
+
+							<!--<TextBlock Text="{TemplateBinding Name}"
+									   IsHitTestVisible="False"
+									   VerticalAlignment="Center"
+									   HorizontalAlignment="Left"
+									   Margin="10,0,0,0"
+									   Foreground="Gray"
+									   Grid.Column="1">
+
+								<TextBlock.Style>
+									<Style TargetType="TextBlock">
+										<Setter Property="Visibility" Value="Hidden"/>
+										<Style.Triggers>
+											<DataTrigger Binding="{Binding Password, ElementName=Pass_box}" Value="">
+												<Setter Property="Visibility" Value="Visible"/>
+											</DataTrigger>
+										</Style.Triggers>
+									</Style>
+								</TextBlock.Style>
+
+							</TextBlock>-->
+						</Grid>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+</ResourceDictionary>

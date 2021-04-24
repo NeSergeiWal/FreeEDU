@@ -5,9 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FreeEDU.View"
         mc:Ignorable="d"
-        Title="RegistrationWindow" Height="450" Width="800"
+        Title="Registration" MinHeight="525" MinWidth="400"
+		Height="525" Width="400"
+		MaxHeight="525" MaxWidth="400"
 		WindowStyle="None" Style="{StaticResource LWStyle}">
-    <Grid>
-        
-    </Grid>
+	
+	<StackPanel Margin="50,10" Background="Transparent">
+		
+		<Label	Style="{StaticResource Input_xl_heading}"		
+				Content="Nikname"/>
+
+		<TextBox Style="{StaticResource Login_input_box}"/>
+		
+		<Label	Style="{StaticResource Input_xl_heading}"		
+				Content="E-mail"/>
+
+		<TextBox Style="{StaticResource Login_input_box}"/>
+
+		<Label	Style="{StaticResource Input_xl_heading}"		
+				Content="Password"/>
+
+		<PasswordBox Style="{StaticResource Login_pass_box}"/>
+
+		<Label	Style="{StaticResource Input_xl_heading}"		
+				Content="Repeat password"/>
+
+		<PasswordBox Style="{StaticResource Login_pass_box}"/>
+
+		<Button Style="{StaticResource Login_bt}" Content="Create" Command="{Binding LoginCommand}"/>
+
+		<Button Margin="0,15,0,0" Style="{StaticResource Help_link_bt}" Content="Отмена"/>
+		
+	</StackPanel>
+	
 </Window>
