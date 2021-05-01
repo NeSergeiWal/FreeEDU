@@ -8,34 +8,37 @@ using System.Threading.Tasks;
 
 namespace FreeEDU.ViewModel
 {
-	class LoginViewModel:BaseViewModel
+	class LoginViewModel:IViewModel
 	{
+		private LoginWindowViewModel _WindowViewModel { get; set; }
+
 		#region LoginCommand
 		public RelayCommand LoginCommand { get; set; }
 
 		private void DoLogin(object obj)
 		{
 			MainWindow mainWindow = new MainWindow();
+			_WindowViewModel.CloseWindowCommand.Execute(null);
 			mainWindow.Show();
-			CloseWindowCommand.Execute(null);
 		}
 		#endregion
 
-		#region RegistrationCommand
-		public RelayCommand RegistrationCommand { get; set; }
+		#region RegistrationPageCommand
+		public RelayCommand RegistrationPageCommand { get; set; }
 
-		private void DoRegistration(object obj)
+		private void DoRegistrationPage(object obj)
 		{
-			RegistrationWindow registrationWindow = new RegistrationWindow();
-			registrationWindow.Show();
-			CloseWindowCommand.Execute(null);
+			_WindowViewModel.CurrentWidth = 525;
+			_WindowViewModel.ChangePageCommand.Execute(obj);
 		}
 		#endregion
 
-		public LoginViewModel():base("FreeEDU.View.LoginWindow")
+		public LoginViewModel(BaseViewModel baseView)
 		{
+			_WindowViewModel = (LoginWindowViewModel)baseView;
+
 			LoginCommand = new RelayCommand(DoLogin);
-			RegistrationCommand = new RelayCommand(DoRegistration);
+			RegistrationPageCommand = new RelayCommand(DoRegistrationPage);
 		}
 	}
 }

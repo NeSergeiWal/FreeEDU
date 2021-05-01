@@ -36,6 +36,30 @@
 		<GradientStop Color="#FFEA69A6" Offset="0.443"/>
 	</LinearGradientBrush>
 
+	<LinearGradientBrush x:Key="AccountPanel_button_Bg" EndPoint="0.5,1" StartPoint="0.5,0">
+		<GradientStop Color="#FFEA69A6" Offset="0"/>
+		<GradientStop Color="Transparent" Offset="1"/>
+	</LinearGradientBrush>
+
+	<LinearGradientBrush x:Key="AccountPanel_left_Bg" EndPoint="0.5,1" StartPoint="0.5,0">
+		<LinearGradientBrush.RelativeTransform>
+			<TransformGroup>
+				<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+				<SkewTransform CenterY="0.5" CenterX="0.5"/>
+				<RotateTransform Angle="270" CenterY="0.5" CenterX="0.5"/>
+				<TranslateTransform/>
+			</TransformGroup>
+		</LinearGradientBrush.RelativeTransform>
+		<GradientStop Color="#FFEA69A6" Offset="0"/>
+		<GradientStop Color="Transparent" Offset="1"/>
+	</LinearGradientBrush>
+
+	<SolidColorBrush x:Key="AccountPanel_center_Bg" Color="#FFDE3182"/>
+	
 	<SolidColorBrush x:Key="Brush_input_box" Color="#95256C"/>
+
+	<SolidColorBrush x:Key="input_heading" Color="#52026E"/>
+
+	<Color x:Key="List_item_shadow_cl">#52026E</Color>
 
 </ResourceDictionary>

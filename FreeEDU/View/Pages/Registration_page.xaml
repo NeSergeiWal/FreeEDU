@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="FreeEDU.View.Pages.Registration_page"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FreeEDU.View.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="380" d:DesignWidth="550">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../../Resources/Templates/LoginWindowTemplates/Login_pass_box_template.xaml"/>
+				<ResourceDictionary Source="../../Resources/Templates/LoginWindowTemplates/Login_input_box_template.xaml"/>
+				<ResourceDictionary Source="../../Resources/Templates/LoginWindowTemplates/Login_bt_template.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+	
+	<Grid Background="Transparent">
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="75"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Grid.Column="0">
+			<Label	Grid.Row="0" Grid.Column="0"
+				Style="{StaticResource Input_xl_heading}"		
+				Content="Login"/>
+
+			<TextBox	Grid.Row="1" Grid.Column="0"
+					Margin="0,0,0,35"
+					Style="{StaticResource Login_input_box}"/>
+
+			<Label	Grid.Row="2" Grid.Column="0"
+				Style="{StaticResource Input_xl_heading}"		
+				Content="Password"/>
+
+			<PasswordBox	Grid.Row="3" Grid.Column="0"
+						Style="{StaticResource Login_pass_box}"/>
+		</StackPanel>
+
+		<StackPanel Grid.Column="1">
+			<Label	Grid.Row="0" Grid.Column="1"
+				Margin="0,70,0,0"
+				Style="{StaticResource Input_xl_heading}"		
+				Content="E-mail"/>
+
+			<TextBox	Grid.Row="1" Grid.Column="1"
+					Style="{StaticResource Login_input_box}"/>
+
+			<Label	Grid.Row="2" Grid.Column="1"
+				Style="{StaticResource Input_xl_heading}"		
+				Content="Repeat password"/>
+
+			<PasswordBox	Grid.Row="3" Grid.Column="1"
+						Style="{StaticResource Login_pass_box}"/>
+		</StackPanel>
+
+		<Button Grid.Row="4" Grid.Column="0"
+				Style="{StaticResource Login_bt}" 
+				Content="Create" 
+				Command="{Binding LoginCommand}"/>
+
+		<Button Grid.Row="4" Grid.Column="1"
+				HorizontalAlignment="Left"
+				Margin="0,15,0,0" Style="{StaticResource Help_link_bt}" Content="Отмена"/>
+
+	</Grid>
+	
+</UserControl>

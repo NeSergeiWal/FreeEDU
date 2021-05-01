@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FreeEDU.View
+namespace FreeEDU.View.Pages
 {
 	/// <summary>
-	/// Логика взаимодействия для RegistrationWindow.xaml
+	/// Логика взаимодействия для Login_page.xaml
 	/// </summary>
-	public partial class RegistrationWindow : Window
+	public partial class Login_page : UserControl
 	{
-		public RegistrationWindow()
+		public Login_page()
 		{
 			InitializeComponent();
 		}

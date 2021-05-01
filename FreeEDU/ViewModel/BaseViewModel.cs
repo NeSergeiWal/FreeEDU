@@ -1,4 +1,6 @@
 ﻿using FreeEDU.Core;
+using FreeEDU.Core.Converters;
+using FreeEDU.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +11,36 @@ using System.Windows;
 
 namespace FreeEDU.ViewModel
 {
-	class BaseViewModel : ObservableObject
+	public abstract class BaseViewModel : ObservableObject, IViewModel
 	{
-		private string _winName;
+		private IViewModel _currentPage;
+		public IViewModel CurrentPage 
+		{
+			get => _currentPage;
+			set
+			{
+				_currentPage = value;
+				OnPropertyChanged("CurrentPage");
+			}
+		}
 
+		#region CloseAppCommand
+		public RelayCommand CloseAppCommand { get; set; }
+		
+		private void DoCloseApp(object obj) => Application.Current.Shutdown();
+		#endregion
+		
 		#region CloseWindowCommand
 		public RelayCommand CloseWindowCommand { get; set; }
 		
 		private void DoCloseWindow(object obj)
 		{
-			foreach (var window in Application.Current.Windows)
+			foreach (Window window in Application.Current.Windows)
 			{
-				if(window.ToString() == _winName)
+				if(window.IsActive)
 				{
-					Window win = (Window)window;
-					win.Close();
+					window.Close();
+					return;
 				}
 			}
 		}
@@ -34,12 +51,12 @@ namespace FreeEDU.ViewModel
 
 		private void DoMinimazeWindow(object obj)
 		{
-			foreach (var window in Application.Current.Windows)
+			foreach (Window window in Application.Current.Windows)
 			{
-				if(window.ToString() == _winName)
+				if(window.IsActive)
 				{
-					Window win = (Window)window;
-					win.WindowState = (win.WindowState == WindowState.Minimized) ? WindowState.Normal : WindowState.Minimized;
+					window.WindowState = (window.WindowState == WindowState.Minimized) ? WindowState.Normal : WindowState.Minimized;
+					return;
 				}
 			}
 		}
@@ -50,24 +67,32 @@ namespace FreeEDU.ViewModel
 
 		private void DoMaximazeWindow(object obj)
 		{
-			foreach (var window in Application.Current.Windows)
+			foreach (Window window in Application.Current.Windows)
 			{
-				if (window.ToString() == _winName)
+				if (window.IsActive)
 				{
-					Window win = (Window)window;
-					win.WindowState = (win.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
+					window.WindowState = 
+						(window.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
+					return;
 				}
 			}
 		}
 		#endregion
+		
+		#region ChangePageCommand
+		public RelayCommand ChangePageCommand { get; set; }
 
-		public BaseViewModel(string winName)
+		private void DoChangePage(object obj)
+			=> CurrentPage = ViewModelConverter.GetViewModel(this, (PageViews)obj);
+		#endregion
+
+		public BaseViewModel()
 		{
-			_winName = winName;
-
+			CloseAppCommand = new RelayCommand(DoCloseApp);
 			CloseWindowCommand = new RelayCommand(DoCloseWindow);
 			MinimazeWindowCommand = new RelayCommand(DoMinimazeWindow);
 			MaximazeWindowCommand = new RelayCommand(DoMaximazeWindow);
+			ChangePageCommand = new RelayCommand(DoChangePage);
 		}
 	}
 }

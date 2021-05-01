@@ -4,6 +4,8 @@
 
 	<Style x:Key="Login_input_box" TargetType="TextBox">
 		<Setter Property="Height" Value="30"/>
+		<Setter Property="Width" Value="220"/>
+		<Setter Property="HorizontalAlignment" Value="Left"/>
 		<Setter Property="Margin" Value="0,0,0,15"/>
 		<Setter Property="SnapsToDevicePixels" Value="True"/>
 		<Setter Property="Template">

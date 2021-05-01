@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace FreeEDU.ViewModel
 {
-	class MainViewModel:BaseViewModel
+	public interface IViewModel
 	{
-		public MainViewModel():base("FreeEDU.View.MainWindow")
-		{
-
-		}
 	}
 }

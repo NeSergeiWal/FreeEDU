@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="FreeEDU.Resources.Controls.CourseNavigationPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FreeEDU.Resources.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="400">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../Styles/CourseNavigationPanel_style.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>	
+	</UserControl.Resources>
+	
+	<Grid Width="400">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="0.5*"/>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="0.5*"/>
+		</Grid.ColumnDefinitions>
+
+		<Button Style="{StaticResource Undo_redo_bt}">
+			<Image Source="../../Resources/Images/undo.png"/>
+		</Button>
+
+		<Button Grid.Column="1" Style="{StaticResource Check_bt}" Content="Check"/>
+
+		<Button Grid.Column="2" Style="{StaticResource Undo_redo_bt}">
+			<Image Source="../../Resources/Images/redo.png"/>
+		</Button>
+	</Grid>
+</UserControl>

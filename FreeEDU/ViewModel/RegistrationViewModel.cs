@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace FreeEDU.ViewModel
 {
-	class RegistrationViewModel:BaseViewModel
+	class RegistrationViewModel:IViewModel
 	{
-		public RegistrationViewModel():base("FreeEDU.View.RegistrationWindow")
-		{
+		private LoginWindowViewModel _WindowVM { get; set; }
 
+		public RegistrationViewModel(BaseViewModel baseView)
+		{
+			_WindowVM = (LoginWindowViewModel)baseView;
 		}
 	}
 }

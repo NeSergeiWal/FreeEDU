@@ -6,37 +6,16 @@
         xmlns:local="clr-namespace:FreeEDU.View"
         xmlns:ViewModel="clr-namespace:FreeEDU.ViewModel" x:Class="FreeEDU.View.LoginWindow"
         mc:Ignorable="d"
-        Title="Login" MinHeight="375" MinWidth="300"
-		Height="375" Width="300"
-		MaxHeight="375" MaxWidth="300"
+        Title="Login" MinHeight="380" MinWidth="{Binding CurrentWidth}"
+		Height="380" Width="{Binding CurrentWidth}"
+		MaxHeight="380" MaxWidth="{Binding CurrentWidth}"
 		WindowStyle="None" Style="{StaticResource LWStyle}">
 
 	<Window.DataContext>
-		<ViewModel:LoginViewModel/>
+		<ViewModel:LoginWindowViewModel/>
 	</Window.DataContext>
 
-	<StackPanel Grid.Column="1" Margin="35,15,35,5">
-
-		<Label	Style="{StaticResource Input_xl_heading}"		
-				Content="E-mail"/>
-
-		<TextBox x:Name="Enter_login" Style="{StaticResource Login_input_box}"/>
-
-		<Label	Style="{StaticResource Input_xl_heading}"
-				Content="Password"/>
-
-		<PasswordBox x:Name="Enter_password" Style="{StaticResource Login_pass_box}"/>
-
-		<Button Style="{StaticResource Login_bt}" Content="Login" Command="{Binding LoginCommand}"/>
-
-		<Button Margin="0,15,0,0" Style="{StaticResource Help_link_bt}" Content="Восстановить"/>
-
-		<Button HorizontalAlignment="Center"
-				Margin="0,5,0,0"
-				Style="{StaticResource Help_link_bt}"
-				Command="{Binding RegistrationCommand}"
-				Content="Registration"/>
-
-	</StackPanel>
+	<ContentControl Margin="35,10"
+					Content="{Binding CurrentPage}"/>
 
 </Window>

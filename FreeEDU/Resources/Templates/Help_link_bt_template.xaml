@@ -3,11 +3,12 @@
                     xmlns:local="clr-namespace:FreeEDU">
 
 	<Style x:Key="Help_link_bt" TargetType="Button">
+		<Setter Property="FontSize" Value="18"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="Button">
 					<Border>
-						<ContentControl FontSize="18"
+						<ContentControl FontSize="{TemplateBinding FontSize}"
 										Foreground="#AC3BD4"
 										HorizontalAlignment="Center"
 										VerticalAlignment="Center"

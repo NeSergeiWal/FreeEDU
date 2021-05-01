@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FreeEDU">
+
+	<Style x:Key="Input_heading" TargetType="Label">
+		<Setter Property="FontWeight" Value="DemiBold"/>
+		<Setter Property="Foreground" Value="{StaticResource input_heading}"/>
+	</Style>
+	
+	<Style x:Key="Input_xxxl_heading" TargetType="Label" BasedOn="{StaticResource Input_heading}">
+		<Setter Property="FontSize" Value="56"/>
+	</Style>
+	
+	<Style x:Key="Input_xl_heading" TargetType="Label" BasedOn="{StaticResource Input_heading}">
+		<Setter Property="FontSize" Value="24"/>
+	</Style>
+	
+	<Style x:Key="Input_md_heading" TargetType="Label" BasedOn="{StaticResource Input_heading}">
+		<Setter Property="FontSize" Value="16"/>
+	</Style>
+	
+	<Style x:Key="Input_xs_heading" TargetType="Label" BasedOn="{StaticResource Input_heading}">
+		<Setter Property="FontSize" Value="12"/>
+	</Style>
+	
+</ResourceDictionary>
