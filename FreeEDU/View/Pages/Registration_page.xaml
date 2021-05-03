@@ -35,14 +35,19 @@
 
 			<TextBox	Grid.Row="1" Grid.Column="0"
 					Margin="0,0,0,35"
+					Text="{Binding Login}"
 					Style="{StaticResource Login_input_box}"/>
 
 			<Label	Grid.Row="2" Grid.Column="0"
 				Style="{StaticResource Input_xl_heading}"		
 				Content="Password"/>
 
-			<PasswordBox	Grid.Row="3" Grid.Column="0"
-						Style="{StaticResource Login_pass_box}"/>
+			<TextBox	Grid.Row="3" Grid.Column="0"
+						x:Name="Enter_password"
+						Text="{Binding Pass}"
+						Style="{StaticResource Login_input_box}"/>
+
+
 		</StackPanel>
 
 		<StackPanel Grid.Column="1">
@@ -52,20 +57,24 @@
 				Content="E-mail"/>
 
 			<TextBox	Grid.Row="1" Grid.Column="1"
+						Text="{Binding Email}"
 					Style="{StaticResource Login_input_box}"/>
 
 			<Label	Grid.Row="2" Grid.Column="1"
 				Style="{StaticResource Input_xl_heading}"		
 				Content="Repeat password"/>
 
-			<PasswordBox	Grid.Row="3" Grid.Column="1"
-						Style="{StaticResource Login_pass_box}"/>
+			<TextBox	Grid.Row="3" Grid.Column="1"
+						Text="{Binding RepPass}"
+						Style="{StaticResource Login_input_box}"/>
+
+			
 		</StackPanel>
 
 		<Button Grid.Row="4" Grid.Column="0"
 				Style="{StaticResource Login_bt}" 
 				Content="Create" 
-				Command="{Binding LoginCommand}"/>
+				Command="{Binding RegistrationCommand}"/>
 
 		<Button Grid.Row="4" Grid.Column="1"
 				HorizontalAlignment="Left"

@@ -1,5 +1,4 @@
-﻿using FreeEDU_Service.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,9 +12,9 @@ namespace FreeEDU_Service
 	public interface IFreeEDU_Service
 	{
 		[OperationContract]
-		string GetAccount(string login, string hashPassword);
+		(string, string, string) GetAccount(string email, string hashPass);
 
 		[OperationContract]
-		Account CreateAcount()
+		(string, string) CreateAcount(string login, string Email, string hashPass);
 	}
 }

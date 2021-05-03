@@ -60,6 +60,8 @@
 
 	<SolidColorBrush x:Key="input_heading" Color="#52026E"/>
 
+	<SolidColorBrush x:Key="error_heading" Color="#ed2d13"/>
+
 	<Color x:Key="List_item_shadow_cl">#52026E</Color>
 
 </ResourceDictionary>

@@ -22,12 +22,16 @@
 		<Label x:Name="lbox"	Style="{StaticResource Input_xl_heading}"		
 				Content="E-mail"/>
 
-		<TextBox x:Name="Enter_login" Style="{StaticResource Login_input_box}"/>
+		<TextBox x:Name="Enter_login" 
+				 Text="{Binding Login}"
+				 Style="{StaticResource Login_input_box}"/>
 
 		<Label	Style="{StaticResource Input_xl_heading}"
 				Content="Password"/>
 
-		<PasswordBox x:Name="Enter_password" Style="{StaticResource Login_pass_box}"/>
+		<TextBox x:Name="Enter_password" 
+				 Text="{Binding Pass}"
+				 Style="{StaticResource Login_input_box}"/>
 
 		<Button Style="{StaticResource Login_bt}" Content="Login" Command="{Binding LoginCommand}"/>
 

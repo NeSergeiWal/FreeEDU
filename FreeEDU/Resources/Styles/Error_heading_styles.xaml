@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FreeEDU">
+
+	<Style x:Key="Error_heading" TargetType="Label">
+		<Setter Property="Margin" Value="25,0"/>
+		<Setter Property="FontWeight" Value="DemiBold"/>
+		<Setter Property="Foreground" Value="{StaticResource error_heading}"/>
+	</Style>
+
+	<Style x:Key="Error_xxxl_heading" TargetType="Label" BasedOn="{StaticResource Error_heading}">
+		<Setter Property="FontSize" Value="56"/>
+	</Style>
+
+	<Style x:Key="Error_xl_heading" TargetType="Label" BasedOn="{StaticResource Error_heading}">
+		<Setter Property="FontSize" Value="24"/>
+	</Style>
+
+	<Style x:Key="Error_md_heading" TargetType="Label" BasedOn="{StaticResource Error_heading}">
+		<Setter Property="FontSize" Value="16"/>
+	</Style>
+
+	<Style x:Key="Error_xs_heading" TargetType="Label" BasedOn="{StaticResource Input_heading}">
+		<Setter Property="FontSize" Value="12"/>
+	</Style>
+
+</ResourceDictionary>

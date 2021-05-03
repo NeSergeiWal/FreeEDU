@@ -55,15 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounts.cs" />
-    <Compile Include="Courses.cs" />
+    <Compile Include="ACCOUNTS.cs" />
+    <Compile Include="COURSES.cs" />
     <Compile Include="FreeEDU_DB.cs" />
-    <Compile Include="Model\Account.cs" />
     <Compile Include="FreeEDU_Service.cs" />
     <Compile Include="IFreeEDU_Service.cs" />
-    <Compile Include="Model\RoleConverter.cs" />
-    <Compile Include="Model\Roles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="REQUESTS.cs" />
+    <Compile Include="sysdiagrams.cs" />
     <Compile Include="USERS.cs" />
   </ItemGroup>
   <ItemGroup>

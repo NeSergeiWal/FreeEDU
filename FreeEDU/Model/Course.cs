@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FreeEDU_Service.Model
+namespace FreeEDU.Model
 {
-	public enum Roles
+	class Course
 	{
-		Admin,
-		Teacher,
-		Pupil
 	}
 }

@@ -12,21 +12,31 @@ namespace FreeEDU_Service
 		{
 		}
 
-		public virtual DbSet<Accounts> Accounts { get; set; }
-		public virtual DbSet<Courses> Courses { get; set; }
+		public virtual DbSet<ACCOUNTS> ACCOUNTS { get; set; }
+		public virtual DbSet<COURSES> COURSES { get; set; }
+		public virtual DbSet<REQUESTS> REQUESTS { get; set; }
+		public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
 		public virtual DbSet<USERS> USERS { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Accounts>()
-				.HasMany(e => e.Courses)
-				.WithRequired(e => e.Accounts)
-				.HasForeignKey(e => e.Account_id)
+			modelBuilder.Entity<ACCOUNTS>()
+				.Property(e => e.Role)
+				.IsFixedLength()
+				.IsUnicode(false);
+
+			modelBuilder.Entity<ACCOUNTS>()
+				.HasMany(e => e.COURSES)
+				.WithRequired(e => e.ACCOUNTS)
 				.WillCascadeOnDelete(false);
 
-			modelBuilder.Entity<Accounts>()
+			modelBuilder.Entity<ACCOUNTS>()
+				.HasOptional(e => e.REQUESTS)
+				.WithRequired(e => e.ACCOUNTS);
+
+			modelBuilder.Entity<ACCOUNTS>()
 				.HasOptional(e => e.USERS)
-				.WithRequired(e => e.Accounts);
+				.WithRequired(e => e.ACCOUNTS);
 		}
 	}
 }

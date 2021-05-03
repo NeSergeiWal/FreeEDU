@@ -14,7 +14,7 @@
 					<Border CornerRadius="10" BorderBrush="{StaticResource Brush_input_box}" BorderThickness="1">
 						<Grid>
 							<Rectangle StrokeThickness="1"/>
-							<TextBox Text="{TemplateBinding Text}"
+							<TextBox Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
 									 Margin="1"
 									 BorderThickness="0"
 									 Background="Transparent"

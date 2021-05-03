@@ -6,31 +6,30 @@ namespace FreeEDU_Service
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Accounts
+    public partial class ACCOUNTS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Accounts()
+        public ACCOUNTS()
         {
-            Courses = new HashSet<Courses>();
+            COURSES = new HashSet<COURSES>();
         }
 
-        public int Id { get; set; }
-
-        [Required]
+        [Key]
         [StringLength(25)]
-        public string Nikname { get; set; }
+        public string Login { get; set; }
 
-        [Column("E-mail")]
         [Required]
-        [StringLength(50)]
-        public string E_mail { get; set; }
+        [StringLength(3)]
+        public string Role { get; set; }
 
-        public byte Role { get; set; }
-
-        public int User_id { get; set; }
+        [Required]
+        [StringLength(150)]
+        public string Url { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Courses> Courses { get; set; }
+        public virtual ICollection<COURSES> COURSES { get; set; }
+
+        public virtual REQUESTS REQUESTS { get; set; }
 
         public virtual USERS USERS { get; set; }
     }

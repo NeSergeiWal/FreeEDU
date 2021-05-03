@@ -6,16 +6,27 @@
         xmlns:local="clr-namespace:FreeEDU.View"
         xmlns:ViewModel="clr-namespace:FreeEDU.ViewModel" x:Class="FreeEDU.View.LoginWindow"
         mc:Ignorable="d"
-        Title="Login" MinHeight="380" MinWidth="{Binding CurrentWidth}"
-		Height="380" Width="{Binding CurrentWidth}"
-		MaxHeight="380" MaxWidth="{Binding CurrentWidth}"
+        Title="Login" MinHeight="400" MinWidth="{Binding CurrentWidth}"
+		Height="400" Width="{Binding CurrentWidth}"
+		MaxHeight="400" MaxWidth="{Binding CurrentWidth}"
 		WindowStyle="None" Style="{StaticResource LWStyle}">
 
 	<Window.DataContext>
 		<ViewModel:LoginWindowViewModel/>
 	</Window.DataContext>
 
-	<ContentControl Margin="35,10"
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="35"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+
+		<Label Style="{StaticResource Error_md_heading}"
+			   Content="{Binding ErrorMsg}"/>
+
+		<ContentControl Grid.Row="1"
+					Margin="35,0"
 					Content="{Binding CurrentPage}"/>
+	</Grid>
 
 </Window>

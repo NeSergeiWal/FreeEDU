@@ -20,6 +20,17 @@ namespace FreeEDU.ViewModel
 			}
 		}
 
+		private string _errorMsg;
+		public string ErrorMsg 
+		{
+			get => _errorMsg;
+			set
+			{
+				_errorMsg = value;
+				OnPropertyChanged("ErrorMsg");
+			}
+		}
+
 		public LoginWindowViewModel()
 		{
 			CurrentWidth = 300;

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FreeEDU.View.Pages"
 			 xmlns:pageViews="clr-namespace:FreeEDU.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="350">
+             d:DesignHeight="450" d:DesignWidth="550">
 
 	<UserControl.Resources>
 		<ResourceDictionary>

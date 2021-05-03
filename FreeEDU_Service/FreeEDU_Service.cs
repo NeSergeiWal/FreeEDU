@@ -5,12 +5,12 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Data.SqlClient;
-using FreeEDU_Service.Model;
+using System.IO;
 
 namespace FreeEDU_Service
 {
 	// ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "FreeEDU_Service" в коде и файле конфигурации.
-	[ServiceBehavior]
+	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 	public class FreeEDU_Service : IFreeEDU_Service
 	{
 		private const string connectionString = "Server=WIN-GVMOUGER3HF;Database=FreeEDU;Trusted_Connection=True;";
@@ -18,50 +18,53 @@ namespace FreeEDU_Service
 		private SqlCommand Command { get; set; }
 		private SqlDataReader Reader { get; set; }
 
-		public string GetAccount(string login, string hashPassword)
+		public (string, string, string) GetAccount(string email, string hashPass)
 		{
-			//Account account = new Account();
-
-			//Command.CommandText = $"SELECT top(1) Id FROM USERS WHERE Login={login} AND HashPassword={hashPassword}";
-			//Reader = Command.ExecuteReader();
-			//if (!Reader.HasRows)
-			//{
-			//	return null;
-			//}
-			//Reader.Read();
-
-			//Command.CommandText = $"SELECT top(1) Id, Nikname, E-mail, Role FROM Accounts WHERE User_id={Reader.GetInt32(0)}";
-			//Reader = Command.ExecuteReader();
-			//Reader.Read();
-
-			//return new Account()
-			//{
-			//	Id = Reader.GetInt32(0),
-			//	Nikname = Reader.GetString(1),
-			//	Email = Reader.GetString(2),
-			//	Role = RoleConverter.GetRoles(Reader.GetInt32(3)),
-			//	UserId = Reader.GetInt32(4)
-			//};
-			string str = null;
-			using(FreeEDU_DB db = new FreeEDU_DB())
+			try
 			{
-				str = db.Table_2.FirstOrDefault().Text;
+				using(FreeEDU_DB db = new FreeEDU_DB())
+				{
+					USERS user = db.USERS.FirstOrDefault(us => us.Email == email && us.HashPass == hashPass);
+
+					if (user != default(USERS))
+					{
+						string json = null;
+
+						ACCOUNTS account = db.ACCOUNTS.First(acc => acc.Login == user.Login);
+						using(StreamReader file = new StreamReader(account.Url))
+						{
+							json = file.ReadToEnd();
+						}
+						return (account.Login, account.Role, json);
+					}
+				}
 			}
-			return str;
+			catch { }
+			
+			return (null, null, null);
 		}
 
-		static FreeEDU_Service()
+		public (string, string) CreateAcount(string login, string email, string hashPass)
 		{
-			Connection = new SqlConnection(connectionString);
-			Connection.Open();
-			if(!(Connection.State == System.Data.ConnectionState.Open))
-			{ }
-		}
+			try
+			{
+				using (FreeEDU_DB db = new FreeEDU_DB())
+				{
+					string jsonPath = @"Users_courses\" + login + ".json";
+					File.Create(jsonPath);
+					db.USERS.Add(new USERS() { Login = login, Email = email, HashPass = hashPass });
+					db.ACCOUNTS.Add(new ACCOUNTS() { Login = login, Role = "stn", Url = jsonPath });
+					db.SaveChanges();
+					ACCOUNTS account = db.ACCOUNTS.First(a => a.Login == login);
+					return (account.Login, account.Role);
+				}
+			}
+			catch(Exception e) 
+			{
+				//using(StreamWriter file = new StreamWriter())
+			}
 
-		public FreeEDU_Service()
-		{
-			Command = new SqlCommand();
-			Command.Connection = Connection;
+			return (null, null);
 		}
 	}
 }

@@ -6,19 +6,15 @@ namespace FreeEDU_Service
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class USERS
+    public partial class REQUESTS
     {
         [Key]
         [StringLength(25)]
         public string Login { get; set; }
 
         [Required]
-        [StringLength(100)]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(128)]
-        public string HashPass { get; set; }
+        [StringLength(150)]
+        public string Url { get; set; }
 
         public virtual ACCOUNTS ACCOUNTS { get; set; }
     }
