@@ -122,12 +122,15 @@
     </Compile>
     <Compile Include="Core\Converters\RolesConverter.cs" />
     <Compile Include="Core\Converters\ViewModelConverter.cs" />
+    <Compile Include="Core\MD5Hasher.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Core\Serializers\CourseCollectionSerializer.cs" />
     <Compile Include="Core\Validators\CustomValidator.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\CurrentCourse.cs" />
+    <Compile Include="Model\Languages.cs" />
     <Compile Include="Model\PageViews.cs" />
     <Compile Include="Model\Roles.cs" />
     <Compile Include="Resources\Controls\CourseNavigationPanel.xaml.cs">

@@ -19,7 +19,7 @@ namespace FreeEDU.Core.Converters
 				case PageViews.CourseList: { return new CoursesListViewModel(sender); }
 				case PageViews.CourseInfo: { return new CourseInfoViewModel(sender); }
 				case PageViews.Course: { return new CourseViewModel(); }
-				case PageViews.Account: { return new AccountViewModel(); }
+				case PageViews.Account: { return new AccountViewModel(sender); }
 				default: { return null; }
 			}
 		}

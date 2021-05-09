@@ -1,4 +1,5 @@
 ﻿using FreeEDU.Core;
+using FreeEDU.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace FreeEDU.ViewModel
 {
 	class CourseInfoViewModel:IViewModel
 	{
+		public Course Course { get; set; }
+
 		private BaseViewModel _WindowVM { get; set; }
 
 		#region StartCommand
@@ -22,6 +25,8 @@ namespace FreeEDU.ViewModel
 
 		public CourseInfoViewModel(BaseViewModel windowVM)
 		{
+			Course = CurrentCourse.GetCurrentCourse();
+
 			_WindowVM = windowVM;
 
 			StartCommand = new RelayCommand(DoStart);

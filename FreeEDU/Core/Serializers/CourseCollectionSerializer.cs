@@ -16,6 +16,6 @@ namespace FreeEDU.Core.Serializers
 		
 
 		public static ObservableCollection<Course> Deserialize(string json)
-			=> (json != null) ? JsonSerializer.Deserialize<ObservableCollection<Course>>(json) : new ObservableCollection<Course>();
+			=> (json != null && json != string.Empty) ? JsonSerializer.Deserialize<ObservableCollection<Course>>(json) : new ObservableCollection<Course>();
 	}
 }

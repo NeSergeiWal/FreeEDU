@@ -5,12 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FreeEDU.View.Pages"
 			 xmlns:controls="clr-namespace:FreeEDU.Resources.Controls"
+			 xmlns:pageViews="clr-namespace:FreeEDU.Model"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="../../Resources/Styles/Account_page_style.xaml"/>
+				<ResourceDictionary Source="../../Resources/Styles/Courses_list_page_style.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
@@ -37,7 +39,9 @@
 		<StackPanel Grid.Row="1"
 					Background="{StaticResource AccountPanel_button_Bg}">
 			<Button Style="{StaticResource Account_option_bt}" Content="Edit"/>
-			<Button Style="{StaticResource Account_option_bt}" Content="Exit"/>
+			<Button Command="{Binding ExitCommand}"
+					Style="{StaticResource Account_option_bt}"
+					Content="Exit"/>
 		</StackPanel>
 
 		<Border Grid.Column="1"
@@ -46,11 +50,21 @@
 					
 					Margin="25,10">
 				<Label Style="{StaticResource Input_xl_heading}" Content="Login"/>
-				<Label Margin="50,0,0,0" Style="{StaticResource Input_md_heading}" Content="Name"/>
+				<Label Margin="50,0,0,0" Style="{StaticResource Input_md_heading}" Content="{Binding Account.Login}"/>
 				<Label Style="{StaticResource Input_xl_heading}" Content="Role"/>
-				<Label Margin="50,0,0,0" Style="{StaticResource Input_md_heading}" Content="Teacher"/>
+				<Label Margin="50,0,0,0" Style="{StaticResource Input_md_heading}" Content="{Binding Account.Role}"/>
 			</StackPanel>
 		</Border>
 
+		<ListBox Grid.Row="1" Grid.Column="1"
+				 ItemsSource="{Binding Account.Courses}"
+				 Style="{StaticResource Courses_list}">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel HorizontalAlignment="Center" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=Width}"/>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+		</ListBox>
+		
 	</Grid>
 </UserControl>

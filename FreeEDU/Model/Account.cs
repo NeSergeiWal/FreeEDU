@@ -21,11 +21,11 @@ namespace FreeEDU.Model
 
 		public static Account GetAccount() => _account;
 
-		public void FullSetProps(string login, string role, string coursesJson = null)
+		public void FullSetProps(string login, string role, string coursesJson = "")
 		{
 			Login = login;
-			Role = RoleConverter.GetRoles(role);
-			Courses = CourseCollectionSerializer.Deserialize(coursesJson);
+			Role = (role == null) ? Roles.Student : RoleConverter.GetRoles(role);
+			Courses = (coursesJson == null) ? null : CourseCollectionSerializer.Deserialize(coursesJson);
 		}
 
 		static Account() => _account = new Account();

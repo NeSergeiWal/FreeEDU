@@ -45,11 +45,8 @@ namespace FreeEDU.ViewModel
 				return;
 			}
 
-			MD5 hasher = MD5.Create();
-			string hashPass = Convert.ToBase64String(hasher.ComputeHash(Encoding.UTF8.GetBytes(Pass)));
-
 			FreeEDU_ServiceClient service = new FreeEDU_ServiceClient();
-			var data = service.CreateAcount(Login, Email, hashPass);
+			var data = service.CreateAcount(Login, Email, MD5Hasher.GetHash(Pass));
 
 			if(data.Item1 == null)
 			{

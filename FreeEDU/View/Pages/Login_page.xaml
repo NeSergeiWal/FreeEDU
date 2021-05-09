@@ -22,8 +22,8 @@
 		<Label x:Name="lbox"	Style="{StaticResource Input_xl_heading}"		
 				Content="E-mail"/>
 
-		<TextBox x:Name="Enter_login" 
-				 Text="{Binding Login}"
+		<TextBox x:Name="Enter_email" 
+				 Text="{Binding Email}"
 				 Style="{StaticResource Login_input_box}"/>
 
 		<Label	Style="{StaticResource Input_xl_heading}"

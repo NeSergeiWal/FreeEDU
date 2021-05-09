@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:FreeEDU">
+                    xmlns:local="clr-namespace:FreeEDU"
+					xmlns:pageViews="clr-namespace:FreeEDU.Model">
 
 	<Style x:Key="Courses_list" TargetType="ListBox">
 		<Setter Property="Background" Value="Transparent"/>
@@ -11,9 +12,9 @@
 		<Setter Property="ItemTemplate">
 			<Setter.Value>
 				<DataTemplate>
-					<Border Padding="30">
+					<Border Padding="20">
 						<Border.Effect>
-							<DropShadowEffect Color="{StaticResource List_item_shadow_cl}" BlurRadius="50" ShadowDepth="1"/>
+							<DropShadowEffect Color="{StaticResource List_item_shadow_cl}" BlurRadius="30" ShadowDepth="0"/>
 						</Border.Effect>
 						<Border CornerRadius="15" Background="White">
 							<Grid Height="250" Width="175">
@@ -38,7 +39,9 @@
 									HorizontalContentAlignment="Center"
 									Content="test"/>
 
-								<Button Grid.Row="2" Style="{StaticResource Take_bt}"/>
+								<Button Grid.Row="2" Style="{StaticResource Take_bt}"
+									Command="{Binding ToCourseCommand}"
+									CommandParameter="{x:Static pageViews:PageViews.CourseInfo}"/>
 
 							</Grid>
 						</Border>

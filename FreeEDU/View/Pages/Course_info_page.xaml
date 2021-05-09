@@ -38,25 +38,25 @@
 				   Content="Teacher"/>
 
 			<Button Style="{StaticResource Teacher_link}"
-					Content="name"/>
+					Content="{Binding Course.Teacher}"/>
 
 			<Label Style="{StaticResource Input_xl_heading}"
 				   Content="Date of creation"/>
 
 			<Label Style="{StaticResource Input_md_heading}"
-				   Content="21.12.2021"/>
+				   Content="{Binding Course.CreateDate}"/>
 
 			<Label Style="{StaticResource Input_xl_heading}"
 				   Content="Last update"/>
 
 			<Label Style="{StaticResource Input_md_heading}"
-				   Content="21.12.2021"/>
+				   Content="{Binding Course.UpdateDate}"/>
 
 			<Label Style="{StaticResource Input_xl_heading}"
 				   Content="Language"/>
 
 			<Label Style="{StaticResource Input_md_heading}"
-				   Content="C#"/>
+				   Content="{Binding Course.Language}"/>
 
 		</StackPanel>
 
@@ -67,7 +67,7 @@
 				   Content="Info"/>
 
 			<Label Style="{StaticResource Input_md_heading}"
-				   Content="This is my first course"/>
+				   Content="{Binding Course.Info}"/>
 
 		</StackPanel>
 

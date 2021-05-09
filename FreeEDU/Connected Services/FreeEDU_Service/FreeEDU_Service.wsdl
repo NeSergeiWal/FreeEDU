@@ -86,7 +86,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8302/</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>WIN-GVMOUGER3HF\User</Upn>
+          <Upn>DESKTOP-H83N477\kolac</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

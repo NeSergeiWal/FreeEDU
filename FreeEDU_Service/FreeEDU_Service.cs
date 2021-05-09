@@ -13,11 +13,6 @@ namespace FreeEDU_Service
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 	public class FreeEDU_Service : IFreeEDU_Service
 	{
-		private const string connectionString = "Server=WIN-GVMOUGER3HF;Database=FreeEDU;Trusted_Connection=True;";
-		private static SqlConnection Connection { get; set; }
-		private SqlCommand Command { get; set; }
-		private SqlDataReader Reader { get; set; }
-
 		public (string, string, string) GetAccount(string email, string hashPass)
 		{
 			try
@@ -59,12 +54,16 @@ namespace FreeEDU_Service
 					return (account.Login, account.Role);
 				}
 			}
-			catch(Exception e) 
-			{
-				//using(StreamWriter file = new StreamWriter())
-			}
+			catch { }
 
 			return (null, null);
 		}
+
+		public string GetCourses()
+		{
+
+			return null;
+		}
+
 	}
 }
