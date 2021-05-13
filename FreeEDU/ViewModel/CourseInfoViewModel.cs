@@ -1,5 +1,6 @@
 ﻿using FreeEDU.Core;
 using FreeEDU.Model;
+using FreeEDU.Model.Course;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,11 @@ namespace FreeEDU.ViewModel
 
 		private BaseViewModel _WindowVM { get; set; }
 
-		#region StartCommand
-		public RelayCommand StartCommand { get; set; }
+		#region ChangePageCommand
+		public RelayCommand ChangePageCommand { get; set; }
 
-		private void DoStart(object obj)
-		{
-			_WindowVM.ChangePageCommand.Execute(obj);
-		}
+		private void DoChangePage(object obj)
+			=> _WindowVM.ChangePageCommand.Execute(obj);
 		#endregion
 
 		public CourseInfoViewModel(BaseViewModel windowVM)
@@ -29,7 +28,7 @@ namespace FreeEDU.ViewModel
 
 			_WindowVM = windowVM;
 
-			StartCommand = new RelayCommand(DoStart);
+			ChangePageCommand = new RelayCommand(DoChangePage);
 		}
 	}
 }

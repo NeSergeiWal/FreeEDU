@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="FreeEDU.View.Pages.Course_constructor_page"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FreeEDU.View.Pages"
+			 xmlns:controls="clr-namespace:FreeEDU.Resources.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../../Resources/Templates/ConstructorTemplates/CourseItem_template.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+	
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="75"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="47"/>
+		</Grid.RowDefinitions>
+
+		<ListBox Background="Transparent"
+				 ItemsSource="{Binding CurrentFrame.CourseItems}"
+				 SelectedItem="{Binding SelectedItem}"
+				 Style="{StaticResource CourseItem}"/>
+
+		<controls:ConstructorTools Margin="0,10,0,0" Grid.Column="1"/>
+
+		<controls:ConstructorNavigationPanel Grid.Row="1"/>
+
+		<StackPanel Grid.Row="1" Grid.Column="1">
+			<Label Style="{StaticResource Input_xs_heading}"
+				   Content="Frame type:"/>
+			<Button Style="{StaticResource Help_link_bt}"
+					FontSize="12"
+					Command="{Binding ChangeFrameTypeCommand}"
+					Content="{Binding FrameType}"/>
+		</StackPanel>
+
+	</Grid>
+</UserControl>

@@ -7,10 +7,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FreeEDU.Model.Course;
 
 namespace FreeEDU.ViewModel
 {
-	class CoursesListViewModel : IViewModel
+	class CoursesListViewModel : ObservableObject, IViewModel
 	{
 		public static ObservableCollection<Course> Courses { get; set; }
 
@@ -18,6 +19,21 @@ namespace FreeEDU.ViewModel
 
 		#region ToCourseCommand
 		public RelayCommand ToCourseCommand { get; set; }
+
+		private void DoCourse(object obj)
+		{
+			CurrentCourse.SetCurrentCourse((Course)obj);
+			_WindowVM.ChangePageCommand.Execute(PageViews.CourseInfo);
+		}
+		#endregion
+
+		#region DeleteCommand
+		public RelayCommand DeleteCommand { get; set; }
+
+		private void DoDelete(object obj)
+		{
+			Courses.Remove((Course)obj);
+		}
 		#endregion
 
 		static CoursesListViewModel()
@@ -29,7 +45,8 @@ namespace FreeEDU.ViewModel
 		{
 			_WindowVM = windowVM;
 
-			ToCourseCommand = new RelayCommand(o => _WindowVM.ChangePageCommand.Execute(o));
+			ToCourseCommand = new RelayCommand(DoCourse);
+			DeleteCommand = new RelayCommand(DoDelete);
 		}
 	}
 }

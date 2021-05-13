@@ -26,7 +26,7 @@
 
 								<Ellipse Width="125" Height="125">
 									<Ellipse.Fill>
-										<ImageBrush ImageSource="../../Resources/Controls/nesCastle.jpg"/>
+										<ImageBrush ImageSource="{Binding Image}"/>
 									</Ellipse.Fill>
 								</Ellipse>
 
@@ -37,11 +37,27 @@
 									FontWeight="DemiBold"
 									HorizontalAlignment="Stretch"
 									HorizontalContentAlignment="Center"
-									Content="test"/>
+									Content="{Binding Name}"/>
 
-								<Button Grid.Row="2" Style="{StaticResource Take_bt}"
-									Command="{Binding ToCourseCommand}"
-									CommandParameter="{x:Static pageViews:PageViews.CourseInfo}"/>
+								<StackPanel Grid.Row="2" 
+										HorizontalAlignment="Center"
+										Orientation="Horizontal">
+
+									<Button Style="{StaticResource Take_bt}"
+											Command="{Binding ToCourseCommand}"
+											CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=DataContext}"/>
+
+									<Button Style="{StaticResource Empty_bt}"
+											Visibility="{Binding Delete}"
+											Margin="10,0,0,0"
+											Command="{Binding DoDelete}"
+											CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=DataContext}">
+										<Image Source="../../Resources/Images/delete_icon.png"
+										   Height="30" Width="30"
+										   Stretch="Fill"/>
+									</Button>
+
+								</StackPanel>
 
 							</Grid>
 						</Border>

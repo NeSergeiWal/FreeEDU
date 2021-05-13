@@ -24,49 +24,13 @@
 		</Grid.RowDefinitions>
 
 		<ListBox Grid.Row="1"
+				 ItemsSource="{Binding Courses}"
 				 Style="{StaticResource Courses_list}">
 			<ListBox.ItemsPanel>
 				<ItemsPanelTemplate>
 					<WrapPanel HorizontalAlignment="Center" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=Width}"/>
 				</ItemsPanelTemplate>
 			</ListBox.ItemsPanel>
-
-			<ListBoxItem>
-				<Border Padding="20">
-					<Border.Effect>
-						<DropShadowEffect Color="{StaticResource List_item_shadow_cl}" BlurRadius="30" ShadowDepth="0"/>
-					</Border.Effect>
-					<Border CornerRadius="15" Background="White">
-						<Grid Height="250" Width="175">
-							<Grid.RowDefinitions>
-								<RowDefinition/>
-								<RowDefinition Height="0.2*"/>
-								<RowDefinition Height="0.2*"/>
-							</Grid.RowDefinitions>
-
-							<Ellipse Width="125" Height="125">
-								<Ellipse.Fill>
-									<ImageBrush ImageSource="../../Resources/Controls/nesCastle.jpg"/>
-								</Ellipse.Fill>
-							</Ellipse>
-
-							<Label	Grid.Row="1"
-									BorderThickness="0,1,0,1"
-									BorderBrush="{StaticResource Brush_input_box}"
-									FontSize="18"
-									FontWeight="DemiBold"
-									HorizontalAlignment="Stretch"
-									HorizontalContentAlignment="Center"
-									Content="test"/>
-
-							<Button Grid.Row="2" Style="{StaticResource Take_bt}"
-									Command="{Binding ToCourseCommand}"
-									CommandParameter="{x:Static pageViews:PageViews.CourseInfo}"/>
-
-						</Grid>
-					</Border>
-				</Border>
-			</ListBoxItem>
 		</ListBox>
 
 	</Grid>

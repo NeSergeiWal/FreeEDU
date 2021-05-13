@@ -44,7 +44,19 @@
 			<DataTemplate DataType="{x:Type viewModel:CourseInfoViewModel}">
 				<view:Course_info_page/>
 			</DataTemplate>
+
+			<DataTemplate DataType="{x:Type viewModel:UsersListViewModel}">
+				<view:Users_List_page/>
+			</DataTemplate>
 			
+			<DataTemplate DataType="{x:Type viewModel:CourseConstructorViewModel}">
+				<view:Course_constructor_page/>
+			</DataTemplate>
+			
+			<DataTemplate DataType="{x:Type viewModel:RegistrationCourseViewModel}">
+				<view:Registration_course_page/>
+			</DataTemplate>
+
 		</ResourceDictionary>
     </Application.Resources>
 </Application>

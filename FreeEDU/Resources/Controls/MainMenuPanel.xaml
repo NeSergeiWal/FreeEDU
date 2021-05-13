@@ -17,12 +17,34 @@
 	</UserControl.Resources>
 	
 	<StackPanel Background="{StaticResource MainMenuBg}">
+		
 		<controls:TopUserIcon Margin="0,15,0,0"/>
+		
 		<Button Style="{StaticResource Menu_bt}"
 				Content="Главная"
 				Command="{Binding ChangePageCommand}"
 				CommandParameter="{x:Static pageViews:PageViews.CourseList}"/>
-		<Button Content="Главная" Style="{StaticResource Menu_bt}"/>
+		
+		<Button Style="{StaticResource Menu_bt}"
+				Content="Пользователи"
+				Command="{Binding ChangePageCommand}"
+				CommandParameter="{x:Static pageViews:PageViews.UsersList}"/>
+		
+		<Button Style="{StaticResource Menu_bt}"
+				Content="Создать тест"
+				Command="{Binding ChangePageCommand}"
+				CommandParameter="{x:Static pageViews:PageViews.RegistrationCourse}"/>
+
+		<Button Style="{StaticResource Menu_bt}"
+				Content="Преподавать!"
+				Command="{Binding ChangePageCommand}"
+				CommandParameter="{x:Static pageViews:PageViews.RegistrationCourse}"/>
+
+		<Button Style="{StaticResource Menu_bt}"
+				Content="Оповестить"
+				Command="{Binding ChangePageCommand}"
+				CommandParameter="{x:Static pageViews:PageViews.RegistrationCourse}"/>
+
 	</StackPanel>
 	
 </UserControl>

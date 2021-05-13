@@ -29,7 +29,7 @@
 		
 		<Label Grid.ColumnSpan="2"
 			   Style="{StaticResource Course_heading}"
-			   Content="Course"/>
+			   Content="{Binding Name}"/>
 
 		<StackPanel Grid.Row="1"
 					Margin="15,10">
@@ -37,8 +37,8 @@
 			<Label Style="{StaticResource Input_xl_heading}"
 				   Content="Teacher"/>
 
-			<Button Style="{StaticResource Teacher_link}"
-					Content="{Binding Course.Teacher}"/>
+			<Label Style="{StaticResource Input_md_heading}"
+				   Content="{Binding Course.Teacher}"/>
 
 			<Label Style="{StaticResource Input_xl_heading}"
 				   Content="Date of creation"/>
@@ -83,7 +83,9 @@
 						Content="Start"/>
 
 				<Button Style="{StaticResource Help_link_bt}"
-					Content="Cansel"/>
+						Command="{Binding StartCommand}"
+						CommandParameter="{x:Static pageViews:PageViews.CourseList}"
+						Content="Cansel"/>
 
 			</StackPanel>
 		</Border>

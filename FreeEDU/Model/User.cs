@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace FreeEDU.Model
 {
-	public enum PageViews
+	class User
 	{
-		Login,
-		Registration,
-		CourseList,
-		CourseInfo,
-		Course,
-		Account,
-		UsersList,
-		Constructor,
-		RegistrationCourse
+		public string Login { get; set; }
+
+		public string Email { get; set; }
+
+		public Roles Role { get; set; }
 	}
 }

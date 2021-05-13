@@ -1,11 +1,6 @@
-﻿using FreeEDU.Model;
-using System;
-using System.Collections.Generic;
+﻿using FreeEDU.Model.Course;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace FreeEDU.Core.Serializers
 {

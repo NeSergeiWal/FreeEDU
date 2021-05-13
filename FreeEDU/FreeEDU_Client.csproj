@@ -120,6 +120,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Core\Converters\ImageConverter.cs" />
     <Compile Include="Core\Converters\RolesConverter.cs" />
     <Compile Include="Core\Converters\ViewModelConverter.cs" />
     <Compile Include="Core\MD5Hasher.cs" />
@@ -128,11 +129,26 @@
     <Compile Include="Core\Serializers\CourseCollectionSerializer.cs" />
     <Compile Include="Core\Validators\CustomValidator.cs" />
     <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\Course.cs" />
-    <Compile Include="Model\CurrentCourse.cs" />
-    <Compile Include="Model\Languages.cs" />
+    <Compile Include="Model\Course\Course.cs" />
+    <Compile Include="Model\Course\CourseFrame.cs" />
+    <Compile Include="Model\Course\CourseFrameType.cs" />
+    <Compile Include="Model\Course\CourseItem\CourseImg.cs" />
+    <Compile Include="Model\Course\CourseItem\CourseItemType.cs" />
+    <Compile Include="Model\Course\CourseItem\CourseQuestion.cs" />
+    <Compile Include="Model\Course\CourseItem\CourseText.cs" />
+    <Compile Include="Model\Course\CourseItem\ICourseItem.cs" />
+    <Compile Include="Model\Course\CurrentCourse.cs" />
+    <Compile Include="Model\Course\Languages.cs" />
     <Compile Include="Model\PageViews.cs" />
     <Compile Include="Model\Roles.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Course\CourseItem\QuestionAnswer.cs" />
+    <Compile Include="Resources\Controls\ConstructorNavigationPanel.xaml.cs">
+      <DependentUpon>ConstructorNavigationPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Controls\ConstructorTools.xaml.cs">
+      <DependentUpon>ConstructorTools.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Controls\CourseNavigationPanel.xaml.cs">
       <DependentUpon>CourseNavigationPanel.xaml</DependentUpon>
     </Compile>
@@ -144,6 +160,7 @@
     </Compile>
     <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CourseConstructorViewModel.cs" />
     <Compile Include="ViewModel\CourseInfoViewModel.cs" />
     <Compile Include="ViewModel\CoursesListViewModel.cs" />
     <Compile Include="ViewModel\CourseViewModel.cs" />
@@ -151,12 +168,17 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\RegistrationCourseViewModel.cs" />
     <Compile Include="ViewModel\RegistrationViewModel.cs" />
+    <Compile Include="ViewModel\UsersListViewModel.cs" />
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\Account_Page_.xaml.cs">
       <DependentUpon>Account_Page_.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Course_constructor_page.xaml.cs">
+      <DependentUpon>Course_constructor_page.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\Course_info_page.xaml.cs">
       <DependentUpon>Course_info_page.xaml</DependentUpon>
@@ -170,9 +192,26 @@
     <Compile Include="View\Pages\Login_page.xaml.cs">
       <DependentUpon>Login_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\Registration_course_page.xaml.cs">
+      <DependentUpon>Registration_course_page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\Registration_page.xaml.cs">
       <DependentUpon>Registration_page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\Requests_page.xaml.cs">
+      <DependentUpon>Requests_page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\Users_List_page.xaml.cs">
+      <DependentUpon>Users_List_page.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\Controls\ConstructorNavigationPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Controls\ConstructorTools.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles\Account_page_style.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +221,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\Error_heading_styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\User_list_page_styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Templates\ConstructorTemplates\CourseItem_template.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Templates\CourseTemplates\InfoItem_template.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -289,6 +340,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\Course_constructor_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\Course_info_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -305,7 +360,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\Registration_course_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\Registration_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Requests_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\Users_List_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -377,6 +444,19 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\image_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\text_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\answer_icon.png" />
+    <Resource Include="Resources\Images\question_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\delete_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

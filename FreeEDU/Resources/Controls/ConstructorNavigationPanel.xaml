@@ -1,43 +1,50 @@
-﻿<UserControl x:Class="FreeEDU.Resources.Controls.CourseNavigationPanel"
+﻿<UserControl x:Class="FreeEDU.Resources.Controls.ConstructorNavigationPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FreeEDU.Resources.Controls"
+			 xmlns:model="clr-namespace:FreeEDU.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="400">
+             d:DesignHeight="450" d:DesignWidth="800">
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="../Styles/CourseNavigationPanel_style.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>	
+		</ResourceDictionary>
 	</UserControl.Resources>
 	
-	<Grid Width="400">
+	<Grid Width="500">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="0.5*"/>
+			<ColumnDefinition/>
 			<ColumnDefinition/>
 			<ColumnDefinition Width="0.5*"/>
 		</Grid.ColumnDefinitions>
 
 		<Button Style="{StaticResource Undo_redo_bt}"
-				Visibility="{Binding Previous}"
 				Command="{Binding PreviousFrameCommand}">
 			<Image Source="../../Resources/Images/undo.png"/>
 		</Button>
 
 		<Button Grid.Column="1" 
 				Style="{StaticResource Check_bt}" 
-				Visibility="{Binding Check}"
-				Command="{Binding CheckCommand}"
-				Content="Check"/>
-
+				Command="{Binding FinishCommand}"
+				CommandParameter="{x:Static model:PageViews.CourseList}"
+				Content="Finish"/>
+		
 		<Button Grid.Column="2" 
+				Style="{StaticResource Check_bt}" 
+				Visibility="{Binding Check}"
+				Command="{Binding DeleteFrameCommand}"
+				Content="Delete frame"/>
+
+		<Button Grid.Column="3" 
 				Style="{StaticResource Undo_redo_bt}"
-				Visibility="{Binding Next}"
 				Command="{Binding NextFrameCommand}">
 			<Image Source="../../Resources/Images/redo.png"/>
 		</Button>
 	</Grid>
+	
 </UserControl>

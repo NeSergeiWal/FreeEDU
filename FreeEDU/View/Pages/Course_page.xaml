@@ -11,6 +11,7 @@
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="../../Resources/Styles/Course_page_style.xaml"/>
+				<ResourceDictionary Source="../../Resources/Templates/CourseTemplates/InfoItem_template.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
@@ -22,18 +23,16 @@
 			<RowDefinition Height="50"/>
 		</Grid.RowDefinitions>
 
-		<StackPanel Orientation="Horizontal">
-			
-			
-		</StackPanel>
-
 		<Label	FontWeight="DemiBold"
 				FontSize="22"
 				VerticalAlignment="Center"
 				HorizontalAlignment="Center" 
 				Content="name"/>
 
-		<StackPanel Grid.Row="1" Margin="35,10"/>
+		<ListBox Grid.Row="1"
+				 ItemsSource="{Binding CurrentFrame.CourseItems}"
+				 Style="{StaticResource InfoItem}">
+		</ListBox>
 
 		<control:CourseNavigationPanel Grid.Row="2"/>
 

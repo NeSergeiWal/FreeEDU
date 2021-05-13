@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:course="clr-namespace:FreeEDU.Model.Course"
+					xmlns:courseItem="clr-namespace:FreeEDU.Model.Course.CourseItem">
+
+	<Style x:Key="InfoItem" TargetType="ListBox">
+		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+		<Setter Property="Margin" Value="15,10"/>
+		<Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+		<Style.Triggers>
+			<DataTrigger Binding="{Binding CurrentFrame.Type}" Value="{x:Static course:CourseFrameType.Theory}">
+				<Setter Property="ItemTemplate">
+					<Setter.Value>
+						<DataTemplate>
+							<ContentControl>
+								<ContentControl.Style>
+									<Style TargetType="ContentControl">
+										<Style.Triggers>
+											<DataTrigger Binding="{Binding ItemType}" Value="{x:Static courseItem:CourseItemType.Text}">
+												<Setter Property="Template">
+													<Setter.Value>
+														<ControlTemplate>
+															<Border Margin="15,0,5,10">
+																<TextBlock FontSize="14" Text="{Binding Text}"/>
+															</Border>
+														</ControlTemplate>
+													</Setter.Value>
+												</Setter>
+											</DataTrigger>
+											<DataTrigger Binding="{Binding ItemType}" Value="{x:Static courseItem:CourseItemType.Image}">
+												<Setter Property="Template">
+													<Setter.Value>
+														<ControlTemplate>
+															<Border HorizontalAlignment="Center">
+																<Image Height="200" Width="500" Stretch="Fill" Source="{Binding Image}"/>
+															</Border>
+														</ControlTemplate>
+													</Setter.Value>
+												</Setter>
+											</DataTrigger>
+										</Style.Triggers>
+									</Style>
+								</ContentControl.Style>
+							</ContentControl>
+						</DataTemplate>
+					</Setter.Value>
+				</Setter>
+			</DataTrigger>
+			<DataTrigger Binding="{Binding CurrentFrame.Type}" Value="{x:Static course:CourseFrameType.Question}">
+				<Setter Property="ItemTemplate">
+					<Setter.Value>
+						<DataTemplate>
+							<ContentControl>
+								<Border Padding="20">
+									<Border.Effect>
+										<DropShadowEffect Color="{StaticResource List_item_shadow_cl}" BlurRadius="30" ShadowDepth="0"/>
+									</Border.Effect>
+									<Border CornerRadius="15" Background="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=DataContext.CheckResult}" Padding="10">
+										<StackPanel HorizontalAlignment="Center">
+											<Label Style="{StaticResource Input_md_heading}"
+												   Content="{Binding Question}"/>
+											<ItemsControl ItemsSource="{Binding Answers}">
+												<ItemsControl.ItemTemplate>
+													<DataTemplate>
+														<CheckBox Content="{Binding Answer}" IsChecked="{Binding IsSelected}"/>
+													</DataTemplate>
+												</ItemsControl.ItemTemplate>
+											</ItemsControl>
+										</StackPanel>
+									</Border>
+								</Border>
+							</ContentControl>
+						</DataTemplate>
+					</Setter.Value>
+				</Setter>
+			</DataTrigger>
+		</Style.Triggers>
+	</Style>
+	
+</ResourceDictionary>

@@ -15,7 +15,7 @@ namespace FreeEDU.Model
 
 		public Roles Role { get; set; }
 
-		public ObservableCollection<Course> Courses { get; set; }
+		public ObservableCollection<FreeEDU.Model.Course.Course> Courses { get; set; }
 
 		private static readonly Account _account;
 

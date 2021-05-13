@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="FreeEDU.View.Pages.Users_List_page"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FreeEDU.View.Pages"
+			 xmlns:model="clr-namespace:FreeEDU.Model"
+			 xmlns:corverters="clr-namespace:FreeEDU.Core.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../../Resources/Styles/User_list_page_styles.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+
+			<ObjectDataProvider x:Key="MovieDataProvider" MethodName="GetValues" ObjectType="{x:Type model:Roles}">
+				<ObjectDataProvider.MethodParameters>
+					<x:Type Type="model:Roles"/>
+				</ObjectDataProvider.MethodParameters>
+			</ObjectDataProvider>
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+	<Grid>
+		<ListBox ItemsSource="{Binding Users}"
+				 Style="{StaticResource Users_list}">
+			<ListBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel HorizontalAlignment="Center" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=Width}"/>
+				</ItemsPanelTemplate>
+			</ListBox.ItemsPanel>
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border Padding="20">
+						<Border.Effect>
+							<DropShadowEffect Color="{StaticResource List_item_shadow_cl}" BlurRadius="30" ShadowDepth="0"/>
+						</Border.Effect>
+						<Border CornerRadius="15" Background="White">
+							<Grid Height="100" Width="550">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="100"/>
+									<ColumnDefinition Width="100"/>
+									<ColumnDefinition Width="150"/>
+									<ColumnDefinition Width="100"/>
+									<ColumnDefinition Width="100"/>
+								</Grid.ColumnDefinitions>
+
+								<Ellipse Grid.Column="0" Height="75" Width="75">
+									<Ellipse.Fill>
+										<ImageBrush ImageSource="../../Resources/Controls/nesCastle.jpg"/>
+									</Ellipse.Fill>
+								</Ellipse>
+
+								<StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+									<Label Style="{StaticResource Input_xl_heading}" Content="Login:"/>
+									<Label Style="{StaticResource Input_xl_heading}" Content="E-mail:"/>
+								</StackPanel>
+
+								<StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+									<Label Style="{StaticResource Input_md_heading}" Content="{Binding Login}"/>
+									<Label Style="{StaticResource Input_md_heading}" Content="{Binding Email}"/>
+								</StackPanel>
+
+								<ComboBox Grid.Column="3" 
+								  Height="50" Width="75" 
+								  FontSize="14"
+								  VerticalContentAlignment="Center"
+								  HorizontalContentAlignment="Center"
+								  SelectedItem="{Binding Role}"
+								  ItemsSource="{Binding Source={StaticResource MovieDataProvider}}">
+								</ComboBox>
+
+								<Button Grid.Column="4"
+							Style="{StaticResource Help_link_bt}"
+							Content="Удалить"/>
+
+							</Grid>
+						</Border>
+					</Border>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+    </Grid>
+</UserControl>

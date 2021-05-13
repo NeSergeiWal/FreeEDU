@@ -18,5 +18,15 @@ namespace FreeEDU.Core.Converters
 				default: { return Roles.Student; }
 			}
 		}
+
+		public static string GetStringRoles(Roles role)
+		{
+			switch(role)
+			{
+				case Roles.Admin: { return "Admin"; }
+				case Roles.Teacher: { return "Teacher"; }
+				default: { return "Student"; }
+			}
+		}
 	}
 }
