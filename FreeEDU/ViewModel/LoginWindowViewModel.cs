@@ -1,4 +1,5 @@
 ﻿using FreeEDU.Core;
+using FreeEDU.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +21,9 @@ namespace FreeEDU.ViewModel
 			}
 		}
 
-		private string _errorMsg;
-		public string ErrorMsg 
-		{
-			get => _errorMsg;
-			set
-			{
-				_errorMsg = value;
-				OnPropertyChanged("ErrorMsg");
-			}
-		}
-
 		public LoginWindowViewModel()
 		{
+			ErrorMsg = "Hello dear user!";
 			CurrentWidth = 300;
 			CurrentPage = new LoginViewModel(this);
 		}

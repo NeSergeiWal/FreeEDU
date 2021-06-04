@@ -21,16 +21,23 @@
 		</ResourceDictionary>
 	</UserControl.Resources>
 
-	<StackPanel ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="100"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition/>
+			<RowDefinition Height="50"/>
+		</Grid.RowDefinitions>
+		
 		<StackPanel  Orientation="Horizontal">
 
 			<StackPanel>
 				<Label Style="{StaticResource Input_xl_heading}"
 					   Content="Course name"/>
 				<TextBox Height="40" Width="150" 
-						 FontSize="18"
+						 FontSize="24"
 						 Margin="15,0,0,0"
-						 MaxLength="12"
+						 MaxLength="16"
 						 VerticalContentAlignment="Center"
 						 Text="{Binding NewCourse.Name}"/>
 			</StackPanel>
@@ -58,17 +65,20 @@
 			</StackPanel>
 			
 		</StackPanel>
-		
+
 		<Label Style="{StaticResource Input_xl_heading}"
+			   Grid.Row="1"
 			   Content="Info"/>
+
 		<TextBox Margin="15,10"
-				 FontSize="14"
+				 Grid.Row="2"
+				 FontSize="24"
+				 MaxLength="300"
 				 Text="{Binding NewCourse.Info}"
 				 TextWrapping="Wrap"
-				 ScrollViewer.CanContentScroll="False"
-				 Height="230"/>
-		
-		<Border Grid.Row="2" Grid.ColumnSpan="2"
+				 ScrollViewer.CanContentScroll="False"/>
+
+		<Border Grid.Row="3" Grid.ColumnSpan="2"
 				BorderBrush="{StaticResource TopPanelBg}"
 				BorderThickness="0,1,0,0">
 			<StackPanel Orientation="Horizontal"
@@ -86,5 +96,5 @@
 
 			</StackPanel>
 		</Border>
-	</StackPanel>
+	</Grid>
 </UserControl>

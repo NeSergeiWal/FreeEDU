@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Style x:Key="HitText" TargetType="TextBlock">
+		<Setter Property="Margin" Value="10,3,0,3"/>
+		<Setter Property="Foreground" Value="LightSlateGray"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="IsHitTestVisible" Value="False"/>
+	</Style>
+	
+</ResourceDictionary>

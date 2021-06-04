@@ -1,7 +1,9 @@
 ﻿using FreeEDU.Core;
+using FreeEDU.FreeEDU_Service;
 using FreeEDU.Model;
 using FreeEDU.Model.Course;
 using FreeEDU.Model.Course.CourseItem;
+using FreeEDU.View;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FreeEDU.ViewModel
@@ -61,29 +64,6 @@ namespace FreeEDU.ViewModel
 		private ObservableCollection<CourseFrame> _CourseFrames { get; set; }
 
 		private BaseViewModel _WindowVM { get; set; }
-
-		#region AddImageCommand
-		public RelayCommand AddImageCommand { get; set; }
-
-		private void DoAddImage(object obj)
-		{
-			if (CurrentFrame.Type == CourseFrameType.Theory)
-			{
-				OpenFileDialog file = new OpenFileDialog();
-				if (file.ShowDialog() == true)
-				{
-					byte[] image;
-					using (FileStream stream = new FileStream(file.FileName, FileMode.Open))
-					{
-						image = new byte[stream.Length];
-						stream.Read(image, 0, image.Length);
-					}
-
-					CurrentFrame.CourseItems.Add(new CourseImg() { ByteImage = image });
-				}
-			}
-		}
-		#endregion
 		
 		#region AddTextCommand
 		public RelayCommand AddTextCommand { get; set; }
@@ -92,7 +72,11 @@ namespace FreeEDU.ViewModel
 		{
 			if (CurrentFrame.Type == CourseFrameType.Theory)
 			{
-				CurrentFrame.CourseItems.Add(new CourseText());
+				if (CurrentFrame.CourseTheory.Count == 0
+					|| CurrentFrame.CourseTheory[CurrentFrame.CourseTheory.Count - 1].Text != null)
+				{
+					CurrentFrame.CourseTheory.Add(new CourseText());
+				}
 			}
 		}
 		#endregion
@@ -103,11 +87,12 @@ namespace FreeEDU.ViewModel
 		private void DoAddQuestion(object obj)
 		{
 			if ((CurrentQuestion == null
-				|| CurrentQuestion.Question != string.Empty)
+				|| CurrentQuestion.Question != null)
 				&& CurrentFrame.Type == CourseFrameType.Question)
 			{
 				CurrentQuestion = new CourseQuestion();
-				CurrentFrame.CourseItems.Add(CurrentQuestion);
+				CurrentQuestion.Answers.Add(new QuestionAnswer());
+				CurrentFrame.CourseQuestions.Add(CurrentQuestion);
 			}
 		}
 		#endregion
@@ -117,7 +102,7 @@ namespace FreeEDU.ViewModel
 
 		private void DoAddAnswer(object obj)
 		{
-			if (CurrentQuestion.Question != string.Empty && CurrentFrame.Type == CourseFrameType.Question)
+			if (CurrentQuestion.Question != null && CurrentFrame.Type == CourseFrameType.Question)
 			{
 				CurrentQuestion.Answers.Add(new QuestionAnswer());
 			}
@@ -131,7 +116,14 @@ namespace FreeEDU.ViewModel
 		{
 			if (_selectedItem != null)
 			{
-				CurrentFrame.CourseItems.Remove(_selectedItem);
+				if (CurrentFrame.Type == CourseFrameType.Theory)
+				{
+					CurrentFrame.CourseTheory.Remove((CourseText)_selectedItem);
+				}
+				else
+				{
+					CurrentFrame.CourseQuestions.Remove((CourseQuestion)_selectedItem);
+				}
 			}
 		}
 		#endregion
@@ -159,7 +151,7 @@ namespace FreeEDU.ViewModel
 			}
 			else
 			{
-				if (CurrentFrame.CourseItems.Count != 0)
+				if (CurrentFrame.CourseTheory.Count != 0 || CurrentFrame.CourseQuestions.Count != 0)
 				{
 					CourseFrame newFrame = new CourseFrame() { Number = CurrentFrame.Number + 1 };
 					newFrame.Type = CourseFrameType.Theory;
@@ -174,16 +166,34 @@ namespace FreeEDU.ViewModel
 		#region FinishCommand
 		public RelayCommand FinishCommand { get; set; }
 
-		private void DoFinish(object obj)
+		private async void DoFinish(object obj)
 		{
-			if (CurrentFrame.CourseItems.Count != 0)
+			if (CurrentFrame.CourseTheory.Count != 0 || CurrentFrame.CourseQuestions.Count != 0)
 			{
 				Account account = Account.GetAccount();
 				Course newCourse = CurrentCourse.GetCurrentCourse();
 				newCourse.CourseFrames = _CourseFrames;
 				newCourse.Teacher = account.Login;
 				newCourse.CreateDate = newCourse.UpdateDate = DateTime.Now.ToShortDateString();
+				try
+				{
+					using (FreeEDU_ServiceClient service = new FreeEDU_ServiceClient())
+					{
+						await service.CreateCourseAsync(newCourse.GetCourseModul());
+					}
+				}
+				catch
+				{
+					_WindowVM.ErrorMsg = "Server isn't responding";
+					Account.GetAccount().Init(new string[] { null, null, null });
+					LoginWindow loginWindow = new LoginWindow();
+					_WindowVM.CloseWindowCommand.Execute(null);
+					loginWindow.Show();
+					return;
+				}
+
 				_WindowVM.ChangePageCommand.Execute(obj);
+				_WindowVM.ErrorMsg = "Create successful";
 			}
 		}
 		#endregion
@@ -209,7 +219,14 @@ namespace FreeEDU.ViewModel
 		{
 			CurrentFrame.Type = (CurrentFrame.Type == CourseFrameType.Theory) ? CourseFrameType.Question : CourseFrameType.Theory;
 			FrameType = null;
-			CurrentFrame.CourseItems.Clear();
+			if (CurrentFrame.Type == CourseFrameType.Theory)
+			{
+				CurrentFrame.CourseTheory.Clear();
+			}
+			else
+			{
+				CurrentFrame.CourseQuestions.Clear();
+			}
 		}
 		#endregion
 
@@ -223,7 +240,6 @@ namespace FreeEDU.ViewModel
 
 			_CourseFrames.Add(CurrentFrame);
 
-			AddImageCommand = new RelayCommand(DoAddImage);
 			AddTextCommand = new RelayCommand(DoAddText);
 			AddQuestionCommand = new RelayCommand(DoAddQuestion);
 			AddAnswerCommand = new RelayCommand(DoAddAnswer);

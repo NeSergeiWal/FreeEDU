@@ -19,11 +19,20 @@
 		<GradientStop Color="#FF9AA400" Offset="0.768"/>
 	</RadialGradientBrush>
 
+	<SolidColorBrush x:Key="Help_link_off_Fg" Color="#AC3BD4"/>
+
+	<SolidColorBrush x:Key="Help_link_on_Fg" Color="#FFEA3A8D"/>
+
 	<SolidColorBrush x:Key="Menu_bt_Fg" Color="#52026E"/>
 
 	<RadialGradientBrush x:Key="Enter_Menu_bt_Bg">
-		<GradientStop Color="White"/>
+		<GradientStop Color="LightGray"/>
 		<GradientStop Color="Transparent" Offset="1.2"/>
+	</RadialGradientBrush>
+	
+	<RadialGradientBrush x:Key="Enter_default_bt_Bg">
+		<GradientStop Color="GhostWhite"/>
+		<GradientStop Color="#FFEA3A8D"  Offset="0.9"/>
 	</RadialGradientBrush>
 
 	<LinearGradientBrush x:Key="TopUserIconBg" EndPoint="0.5,1" StartPoint="0.5,0">

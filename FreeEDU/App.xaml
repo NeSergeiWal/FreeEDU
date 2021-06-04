@@ -16,6 +16,7 @@
 				<ResourceDictionary Source="Resources/Templates/MainWindowTemplate.xaml"/>
 				<ResourceDictionary Source="Resources/Styles/LoginWindowStyles.xaml"/>
 				<ResourceDictionary Source="Resources/Styles/Input_heading_styles.xaml"/>
+				<ResourceDictionary Source="Resources/Styles/TextBlock_styles.xaml"/>
 				<ResourceDictionary Source="Resources/Styles/Error_heading_styles.xaml"/>
 				<ResourceDictionary Source="Resources/Styles/MainWindowStyles.xaml"/>
 				<ResourceDictionary Source="Resources/Templates/Mini-Exp_bt_template.xaml"/>
@@ -55,6 +56,10 @@
 			
 			<DataTemplate DataType="{x:Type viewModel:RegistrationCourseViewModel}">
 				<view:Registration_course_page/>
+			</DataTemplate>
+			
+			<DataTemplate DataType="{x:Type viewModel:RequestsViewModel}">
+				<view:Requests_page/>
 			</DataTemplate>
 
 		</ResourceDictionary>

@@ -10,7 +10,6 @@ namespace FreeEDU.Model.Course.CourseItem
 	{
 		Question,
 		Answer,
-		Text,
-		Image
+		Text
 	}
 }

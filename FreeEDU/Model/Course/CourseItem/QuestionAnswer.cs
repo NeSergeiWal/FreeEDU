@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace FreeEDU.Model.Course.CourseItem
 {
+	[Serializable]
 	class QuestionAnswer : ObservableObject, ICourseItem
 	{
 		public CourseItemType ItemType { get => CourseItemType.Answer; }
@@ -17,7 +19,7 @@ namespace FreeEDU.Model.Course.CourseItem
 
 		private bool _isSelected;
 
-		public bool IsSelected 
+		public bool IsSelected
 		{
 			get => _isSelected;
 			set

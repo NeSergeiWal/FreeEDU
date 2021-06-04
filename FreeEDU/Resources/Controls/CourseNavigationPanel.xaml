@@ -31,7 +31,7 @@
 				Style="{StaticResource Check_bt}" 
 				Visibility="{Binding Check}"
 				Command="{Binding CheckCommand}"
-				Content="Check"/>
+				Content="{Binding ActionMsg}"/>
 
 		<Button Grid.Column="2" 
 				Style="{StaticResource Undo_redo_bt}"

@@ -3,10 +3,11 @@
                     xmlns:local="clr-namespace:FreeEDU">
 
 	<Style x:Key="Default_bt" TargetType="Button">
+		<Setter Property="Background" Value="{StaticResource Login_bt_Bg}"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="Button">
-					<Border CornerRadius="10" Background="{StaticResource Login_bt_Bg}">
+					<Border CornerRadius="10" Name="border" Background="{TemplateBinding Background}">
 						<Label	FontSize="20"
 								FontWeight="DemiBold"
 								VerticalAlignment="Stretch"
@@ -18,6 +19,12 @@
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Cursor" Value="Hand"/>
+				<Setter Property="Background" Value="{StaticResource Enter_default_bt_Bg}"/>
+			</Trigger>
+		</Style.Triggers>
 	</Style>
 
 </ResourceDictionary>

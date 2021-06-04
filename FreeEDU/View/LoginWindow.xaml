@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FreeEDU.View"
         xmlns:ViewModel="clr-namespace:FreeEDU.ViewModel" x:Class="FreeEDU.View.LoginWindow"
+		xmlns:controls="clr-namespace:FreeEDU.Resources.Controls"
         mc:Ignorable="d"
         Title="Login" MinHeight="400" MinWidth="{Binding CurrentWidth}"
+		WindowStartupLocation="CenterScreen"
 		Height="400" Width="{Binding CurrentWidth}"
+		Icon="..\Resources\Images\icon.png"
 		MaxHeight="400" MaxWidth="{Binding CurrentWidth}"
 		WindowStyle="None" Style="{StaticResource LWStyle}">
 
@@ -17,15 +20,29 @@
 
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="35"/>
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 
-		<Label Style="{StaticResource Error_md_heading}"
-			   Content="{Binding ErrorMsg}"/>
+		<controls:MessBox Grid.Row="1" Margin="0,-600,0,0"
+						  Box="{Binding ErrorMsg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}">
+			<controls:MessBox.Triggers>
+				<EventTrigger RoutedEvent="Binding.TargetUpdated" SourceName="statusText">
+					<BeginStoryboard>
+						<Storyboard>
+							<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" BeginTime="00:00:00">
+								<SplineThicknessKeyFrame KeyTime="00:00:00" Value="0,-600,0,0" />
+								<SplineThicknessKeyFrame KeyTime="00:00:01" Value="0,-325,0,0" />
+								<SplineThicknessKeyFrame KeyTime="00:00:03" Value="0,-325,0,0" />
+								<SplineThicknessKeyFrame KeyTime="00:00:04" Value="0,-600,0,0" />
+							</ThicknessAnimationUsingKeyFrames>
+						</Storyboard>
+					</BeginStoryboard>
+				</EventTrigger>
+			</controls:MessBox.Triggers>
+		</controls:MessBox>
 
 		<ContentControl Grid.Row="1"
-					Margin="35,0"
+					Margin="35,25"
 					Content="{Binding CurrentPage}"/>
 	</Grid>
 

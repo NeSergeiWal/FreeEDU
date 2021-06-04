@@ -4,12 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FreeEDU.Resources.Controls"
-			 xmlns:pageViews="clr-namespace:FreeEDU.Model"
+			 xmlns:model="clr-namespace:FreeEDU.Model"
+			 xmlns:converters="clr-namespace:FreeEDU.Core.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100">
+	<UserControl.Resources>
+		<converters:ImageConverter x:Key="ImageConverter"/>
+	</UserControl.Resources>
 
 	<Button Command="{Binding ChangePageCommand}"
-			CommandParameter="{x:Static pageViews:PageViews.Account}">
+			CommandParameter="{x:Static model:PageViews.Account}">
 		<Button.Template>
 			<ControlTemplate TargetType="Button">
 				<Border BorderBrush="{StaticResource TopUserIconBg}"
@@ -28,7 +32,7 @@
 					 HorizontalAlignment="Center"
 					 VerticalAlignment="Center">
 				<Ellipse.Fill>
-					<ImageBrush ImageSource="nesCastle.jpg"/>
+					<ImageBrush ImageSource="{Binding Account.ByteImage, Converter={StaticResource ImageConverter}}"/>
 				</Ellipse.Fill>
 			</Ellipse>
 		</Button.Content>

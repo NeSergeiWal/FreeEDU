@@ -33,7 +33,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IFreeEDU_Service_GetAccount_InputMessage">
@@ -48,6 +48,108 @@
   <wsdl:message name="IFreeEDU_Service_CreateAcount_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateAcountResponse" />
   </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_CreateCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCourse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_CreateCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetCourses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourses" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetCourses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCoursesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_AddComletedCourses_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddComletedCourses" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_AddComletedCourses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddComletedCoursesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetComletedCourses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComletedCourses" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetComletedCourses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComletedCoursesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_CreateComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateComment" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_CreateComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetComments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComments" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetComments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_EditAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditAccount" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_EditAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_EditCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditCourse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_EditCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_RemoveAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAccount" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_RemoveAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_RemoveCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCourse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_RemoveCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetEmails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmails" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetEmails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_SendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_SendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_AcceptRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_AcceptRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_RejectRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:RejectRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_RejectRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RejectRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequests" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetRequests_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_ChangeRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeRole" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_ChangeRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetAccounts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccounts" />
+  </wsdl:message>
+  <wsdl:message name="IFreeEDU_Service_GetAccounts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IFreeEDU_Service">
     <wsdl:operation name="GetAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetAccount" message="tns:IFreeEDU_Service_GetAccount_InputMessage" />
@@ -56,6 +158,74 @@
     <wsdl:operation name="CreateAcount">
       <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/CreateAcount" message="tns:IFreeEDU_Service_CreateAcount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/CreateAcountResponse" message="tns:IFreeEDU_Service_CreateAcount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/CreateCourse" message="tns:IFreeEDU_Service_CreateCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/CreateCourseResponse" message="tns:IFreeEDU_Service_CreateCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetCourses" message="tns:IFreeEDU_Service_GetCourses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetCoursesResponse" message="tns:IFreeEDU_Service_GetCourses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddComletedCourses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/AddComletedCourses" message="tns:IFreeEDU_Service_AddComletedCourses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/AddComletedCoursesResponse" message="tns:IFreeEDU_Service_AddComletedCourses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComletedCourses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetComletedCourses" message="tns:IFreeEDU_Service_GetComletedCourses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetComletedCoursesResponse" message="tns:IFreeEDU_Service_GetComletedCourses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateComment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/CreateComment" message="tns:IFreeEDU_Service_CreateComment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/CreateCommentResponse" message="tns:IFreeEDU_Service_CreateComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetComments" message="tns:IFreeEDU_Service_GetComments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetCommentsResponse" message="tns:IFreeEDU_Service_GetComments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/EditAccount" message="tns:IFreeEDU_Service_EditAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/EditAccountResponse" message="tns:IFreeEDU_Service_EditAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/EditCourse" message="tns:IFreeEDU_Service_EditCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/EditCourseResponse" message="tns:IFreeEDU_Service_EditCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/RemoveAccount" message="tns:IFreeEDU_Service_RemoveAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/RemoveAccountResponse" message="tns:IFreeEDU_Service_RemoveAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/RemoveCourse" message="tns:IFreeEDU_Service_RemoveCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/RemoveCourseResponse" message="tns:IFreeEDU_Service_RemoveCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetEmails" message="tns:IFreeEDU_Service_GetEmails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetEmailsResponse" message="tns:IFreeEDU_Service_GetEmails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/SendRequest" message="tns:IFreeEDU_Service_SendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/SendRequestResponse" message="tns:IFreeEDU_Service_SendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/AcceptRequest" message="tns:IFreeEDU_Service_AcceptRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/AcceptRequestResponse" message="tns:IFreeEDU_Service_AcceptRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/RejectRequest" message="tns:IFreeEDU_Service_RejectRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/RejectRequestResponse" message="tns:IFreeEDU_Service_RejectRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetRequests" message="tns:IFreeEDU_Service_GetRequests_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetRequestsResponse" message="tns:IFreeEDU_Service_GetRequests_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/ChangeRole" message="tns:IFreeEDU_Service_ChangeRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/ChangeRoleResponse" message="tns:IFreeEDU_Service_ChangeRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccounts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetAccounts" message="tns:IFreeEDU_Service_GetAccounts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFreeEDU_Service/GetAccountsResponse" message="tns:IFreeEDU_Service_GetAccounts_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IFreeEDU_Service" type="tns:IFreeEDU_Service">
@@ -72,6 +242,159 @@
     </wsdl:operation>
     <wsdl:operation name="CreateAcount">
       <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/CreateAcount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCourse">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/CreateCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/GetCourses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComletedCourses">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/AddComletedCourses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComletedCourses">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/GetComletedCourses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateComment">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/CreateComment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComments">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/GetComments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditAccount">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/EditAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditCourse">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/EditCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAccount">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/RemoveAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCourse">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/RemoveCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmails">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/GetEmails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/SendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/AcceptRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/RejectRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRequests">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/GetRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeRole">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/ChangeRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccounts">
+      <soap12:operation soapAction="http://tempuri.org/IFreeEDU_Service/GetAccounts" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

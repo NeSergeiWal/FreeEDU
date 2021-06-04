@@ -5,13 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FreeEDU.View.Pages"
 			 xmlns:pageViews="clr-namespace:FreeEDU.Model"
+			 xmlns:controls="clr-namespace:FreeEDU.Resources.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="380" d:DesignWidth="300">
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="../../Resources/Templates/LoginWindowTemplates/Login_pass_box_template.xaml"/>
-				<ResourceDictionary Source="../../Resources/Templates/LoginWindowTemplates/Login_input_box_template.xaml"/>
 				<ResourceDictionary Source="../../Resources/Templates/LoginWindowTemplates/Login_bt_template.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
@@ -22,20 +21,22 @@
 		<Label x:Name="lbox"	Style="{StaticResource Input_xl_heading}"		
 				Content="E-mail"/>
 
-		<TextBox x:Name="Enter_email" 
-				 Text="{Binding Email}"
-				 Style="{StaticResource Login_input_box}"/>
+		<controls:LoginBox Box="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"
+						   HitText="Enter E-mail"
+						   Margin="0,0,0,15"/>
 
 		<Label	Style="{StaticResource Input_xl_heading}"
 				Content="Password"/>
 
-		<TextBox x:Name="Enter_password" 
-				 Text="{Binding Pass}"
-				 Style="{StaticResource Login_input_box}"/>
+		<controls:PassBox  Margin="0,0,0,15"
+			Box="{Binding Pass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
 
-		<Button Style="{StaticResource Login_bt}" Content="Login" Command="{Binding LoginCommand}"/>
+		<Button x:Name="loginB"
+			    Style="{StaticResource Login_bt}" 
+				Content="Login"
+				Command="{Binding LoginCommand}"/>
 
-		<Button Margin="0,15,0,0" Style="{StaticResource Help_link_bt}" Content="Восстановить"/>
+		<!--<Button Margin="0,15,0,0" Style="{StaticResource Help_link_bt}" Content="Восстановить"/>-->
 
 		<Button HorizontalAlignment="Center"
 				Margin="0,5,0,0"

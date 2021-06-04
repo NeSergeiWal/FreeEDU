@@ -20,6 +20,7 @@
 
 		<Style.Triggers>
 			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Cursor" Value="Hand"/>
 				<Setter Property="Background" Value="{StaticResource Enter_Menu_bt_Bg}"/>
 			</Trigger>
 		</Style.Triggers>

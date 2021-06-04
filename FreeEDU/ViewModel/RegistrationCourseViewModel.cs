@@ -44,7 +44,7 @@ namespace FreeEDU.ViewModel
 		{
 			if(obj is PageViews.Constructor)
 			{
-				if(NewCourse.Info == string.Empty)
+				if(NewCourse.Info == null || NewCourse.Name == null)
 				{
 					return;
 				}

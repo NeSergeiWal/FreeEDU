@@ -35,8 +35,7 @@
 				Content="Finish"/>
 		
 		<Button Grid.Column="2" 
-				Style="{StaticResource Check_bt}" 
-				Visibility="{Binding Check}"
+				Style="{StaticResource Check_bt}"
 				Command="{Binding DeleteFrameCommand}"
 				Content="Delete frame"/>
 

@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FreeEDU.View.Pages"
+			 xmlns:controls="clr-namespace:FreeEDU.Resources.Controls"
+			 xmlns:model="clr-namespace:FreeEDU.Model"
              mc:Ignorable="d" 
              d:DesignHeight="380" d:DesignWidth="550">
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="../../Resources/Templates/LoginWindowTemplates/Login_pass_box_template.xaml"/>
-				<ResourceDictionary Source="../../Resources/Templates/LoginWindowTemplates/Login_input_box_template.xaml"/>
 				<ResourceDictionary Source="../../Resources/Templates/LoginWindowTemplates/Login_bt_template.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
@@ -24,61 +24,59 @@
 		</Grid.ColumnDefinitions>
 
 		<Grid.RowDefinitions>
+			<RowDefinition Height="43"/>
+			<RowDefinition Height="40"/>
 			<RowDefinition/>
-			<RowDefinition Height="75"/>
+			<RowDefinition Height="60"/>
 		</Grid.RowDefinitions>
 
-		<StackPanel Grid.Column="0">
-			<Label	Grid.Row="0" Grid.Column="0"
+		<Label	Grid.Row="0" Grid.Column="0"
 				Style="{StaticResource Input_xl_heading}"		
 				Content="Login"/>
 
-			<TextBox	Grid.Row="1" Grid.Column="0"
-					Margin="0,0,0,35"
-					Text="{Binding Login}"
-					Style="{StaticResource Login_input_box}"/>
+		<controls:LoginBox  Grid.Row="1" Grid.Column="0"
+			Box="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"
+						   HitText="Enter Login"/>
 
+		<Label	Grid.Row="0" Grid.Column="1"
+				Style="{StaticResource Input_xl_heading}"		
+				Content="E-mail"/>
+
+		<controls:LoginBox Grid.Row="1" Grid.Column="1"
+			Box="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"
+						   HitText="Enter E-mail"/>
+
+		<StackPanel Grid.Row="2" 
+					Grid.ColumnSpan="2"
+					Width="230">
 			<Label	Grid.Row="2" Grid.Column="0"
 				Style="{StaticResource Input_xl_heading}"		
 				Content="Password"/>
 
-			<TextBox	Grid.Row="3" Grid.Column="0"
-						x:Name="Enter_password"
-						Text="{Binding Pass}"
-						Style="{StaticResource Login_input_box}"/>
+			<controls:PassBox 
+				Box="{Binding Pass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
 
-
-		</StackPanel>
-
-		<StackPanel Grid.Column="1">
-			<Label	Grid.Row="0" Grid.Column="1"
-				Margin="0,70,0,0"
-				Style="{StaticResource Input_xl_heading}"		
-				Content="E-mail"/>
-
-			<TextBox	Grid.Row="1" Grid.Column="1"
-						Text="{Binding Email}"
-					Style="{StaticResource Login_input_box}"/>
 
 			<Label	Grid.Row="2" Grid.Column="1"
 				Style="{StaticResource Input_xl_heading}"		
 				Content="Repeat password"/>
 
-			<TextBox	Grid.Row="3" Grid.Column="1"
-						Text="{Binding RepPass}"
-						Style="{StaticResource Login_input_box}"/>
+			<controls:PassBox 
+				Box="{Binding RepPass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"/>
 
-			
 		</StackPanel>
 
-		<Button Grid.Row="4" Grid.Column="0"
+		<Button Grid.Row="3" Grid.Column="0"
 				Style="{StaticResource Login_bt}" 
 				Content="Create" 
 				Command="{Binding RegistrationCommand}"/>
 
-		<Button Grid.Row="4" Grid.Column="1"
+		<Button Grid.Row="3" Grid.Column="1"
 				HorizontalAlignment="Left"
-				Margin="0,15,0,0" Style="{StaticResource Help_link_bt}" Content="Отмена"/>
+				Command="{Binding CanselCommand}"
+				CommandParameter="{x:Static model:PageViews.Login}"
+				Margin="0,15,0,0" 
+				Style="{StaticResource Help_link_bt}" Content="Отмена"/>
 
 	</Grid>
 	

@@ -4,12 +4,13 @@
 
 	<Style x:Key="Help_link_bt" TargetType="Button">
 		<Setter Property="FontSize" Value="18"/>
+		<Setter Property="Foreground" Value="{StaticResource Help_link_off_Fg}"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="Button">
 					<Border>
 						<ContentControl FontSize="{TemplateBinding FontSize}"
-										Foreground="#AC3BD4"
+										Foreground="{TemplateBinding Foreground}"
 										HorizontalAlignment="Center"
 										VerticalAlignment="Center"
 										Content="{TemplateBinding Content}"/>
@@ -17,6 +18,12 @@
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Cursor" Value="Hand"/>
+				<Setter Property="Foreground" Value="{StaticResource Help_link_on_Fg}"/>
+			</Trigger>
+		</Style.Triggers>
 	</Style>
 	
 </ResourceDictionary>

@@ -10,13 +10,15 @@ using System.Security.Cryptography;
 using FreeEDU.Model;
 using System.ComponentModel.DataAnnotations;
 using FreeEDU.Core.Validators;
+using FreeEDU.Model.Course;
+using System.Text.Json;
 
 namespace FreeEDU.ViewModel
 {
 	class LoginViewModel:IViewModel
 	{
-		[Required(ErrorMessage = "Please enter e-mail")]
-		[EmailAddress(ErrorMessage = "Enter correct E-mail")]
+		[Required(ErrorMessage = "Please enter e-mail or login")]
+		[StringLength(100, ErrorMessage = "Min lenght 3 symbols", MinimumLength = 3)]
 		public string Email { get; set; }
 
 		[Required(ErrorMessage = "Please enter password")]
@@ -37,17 +39,29 @@ namespace FreeEDU.ViewModel
 				return;
 			}
 
-			FreeEDU_ServiceClient service = new FreeEDU_ServiceClient();
-			var data = service.GetAccount(Email, MD5Hasher.GetHash(Pass));
-
-			if (data.Item1 == null)
+			string[] data = null;
+			try
 			{
-				_WindowVM.ErrorMsg = "Make sure to enter the correct e-mail and password";
+				using (FreeEDU_ServiceClient service = new FreeEDU_ServiceClient())
+				{
+					data = service.GetAccount(Email, MD5Hasher.GetHash(Pass));
+				}
+			}
+			catch
+			{
+				_WindowVM.ErrorMsg = "Server isn't responding";
+				_WindowVM.ChangePageCommand.Execute(PageViews.Login);
+				return;
+			}
+
+			if (data == null)
+			{
+				_WindowVM.ErrorMsg = "Account not found";
 				return;
 			}
 
 			Account account = Account.GetAccount();
-			account.FullSetProps(data.Item1, data.Item2, data.Item3);
+			account.Init(data);
 
 			MainWindow mainWindow = new MainWindow();
 			_WindowVM.CloseWindowCommand.Execute(null);
@@ -61,6 +75,7 @@ namespace FreeEDU.ViewModel
 		private void DoRegistrationPage(object obj)
 		{
 			_WindowVM.CurrentWidth = 525;
+			_WindowVM.ErrorMsg = "Registration form";
 			_WindowVM.ChangePageCommand.Execute(obj);
 		}
 		#endregion
@@ -68,7 +83,6 @@ namespace FreeEDU.ViewModel
 		public LoginViewModel(BaseViewModel baseView)
 		{
 			_WindowVM = (LoginWindowViewModel)baseView;
-
 			LoginCommand = new RelayCommand(DoLogin);
 			RegistrationPageCommand = new RelayCommand(DoRegistrationPage);
 		}

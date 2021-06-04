@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="FreeEDU.Resources.Controls.MessBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FreeEDU.Resources.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Name="messBox">
+	<Grid>
+		<Border Padding="20">
+			<Border.Effect>
+				<DropShadowEffect Color="Purple" BlurRadius="30" ShadowDepth="0"/>
+			</Border.Effect>
+			<Border Name="box" Background="White" Height="50"
+					CornerRadius="15">
+				<TextBlock Name="statusText" 
+						   Style="{StaticResource Text_md}"
+						   HorizontalAlignment="Center"
+						   VerticalAlignment="Center"
+						   Text="{Binding ElementName=messBox, Path=Box, Mode=TwoWay, NotifyOnTargetUpdated=True}"/>
+			</Border>
+		</Border>
+	</Grid>
+</UserControl>

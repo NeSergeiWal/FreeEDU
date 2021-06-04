@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:FreeEDU.View.Pages"
 			 xmlns:controls="clr-namespace:FreeEDU.Resources.Controls"
 			 xmlns:pageViews="clr-namespace:FreeEDU.Model"
+			 xmlns:converters="clr-namespace:FreeEDU.Core.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 	<UserControl.Resources>
@@ -14,6 +15,8 @@
 				<ResourceDictionary Source="../../Resources/Styles/Account_page_style.xaml"/>
 				<ResourceDictionary Source="../../Resources/Styles/Courses_list_page_style.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
+
+			<converters:ImageConverter x:Key="ImageConverter"/>
 		</ResourceDictionary>
 	</UserControl.Resources>
 
@@ -28,17 +31,21 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 
-		<Border Background="{StaticResource AccountPanel_center_Bg}">
-			<Ellipse Height="150" Width="150">
+		<Grid Background="{StaticResource AccountPanel_center_Bg}">
+			<Ellipse Height="150" Width="150" 
+					 StrokeThickness="2" Stroke="Black">
 				<Ellipse.Fill>
-					<ImageBrush ImageSource="../../Resources/Controls/nesCastle.jpg"/>
+					<ImageBrush ImageSource="{Binding Account.ByteImage, Converter={StaticResource ImageConverter}}"/>
 				</Ellipse.Fill>
 			</Ellipse>
-		</Border>
+		</Grid>
 
 		<StackPanel Grid.Row="1"
 					Background="{StaticResource AccountPanel_button_Bg}">
-			<Button Style="{StaticResource Account_option_bt}" Content="Edit"/>
+			<!--<Button Style="{StaticResource Account_option_bt}" Content="Browse..."
+					Command="{Binding RemoveUserCommand}"/>-->
+			<Button Style="{StaticResource Account_option_bt}" Content="Remove"
+					Command="{Binding RemoveUserCommand}"/>
 			<Button Command="{Binding ExitCommand}"
 					Style="{StaticResource Account_option_bt}"
 					Content="Exit"/>
@@ -56,15 +63,19 @@
 			</StackPanel>
 		</Border>
 
-		<ListBox Grid.Row="1" Grid.Column="1"
-				 ItemsSource="{Binding Account.Courses}"
+		<StackPanel Grid.Row="1" Grid.Column="1">
+			<Label Style="{StaticResource Input_xl_heading}"
+				   Margin="25,0"
+				   Content="Completed courses"/>
+			<ListBox ItemsSource="{Binding Account.Courses}"
 				 Style="{StaticResource Courses_list}">
-			<ListBox.ItemsPanel>
-				<ItemsPanelTemplate>
-					<WrapPanel HorizontalAlignment="Center" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=Width}"/>
-				</ItemsPanelTemplate>
-			</ListBox.ItemsPanel>
-		</ListBox>
-		
+				<ListBox.ItemsPanel>
+					<ItemsPanelTemplate>
+						<WrapPanel HorizontalAlignment="Center" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=Width}"/>
+					</ItemsPanelTemplate>
+				</ListBox.ItemsPanel>
+			</ListBox>
+		</StackPanel>
+
 	</Grid>
 </UserControl>

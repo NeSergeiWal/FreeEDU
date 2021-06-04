@@ -4,10 +4,11 @@
 
 	<Style x:Key="Empty_bt" TargetType="Button">
 		<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+		<Setter Property="Background" Value="Transparent"/>
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="Button">
-					<Border>
+					<Border Background="{TemplateBinding Background}">
 						<ContentControl	HorizontalAlignment="Center"
 										VerticalAlignment="Center"
 										Content="{TemplateBinding Content}"/>
@@ -15,6 +16,12 @@
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
+		<Style.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter Property="Cursor" Value="Hand"/>
+				<Setter Property="Background" Value="{StaticResource Enter_Menu_bt_Bg}"/>
+			</Trigger>
+		</Style.Triggers>
 	</Style>
 	
 </ResourceDictionary>

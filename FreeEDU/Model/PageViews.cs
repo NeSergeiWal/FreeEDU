@@ -16,6 +16,7 @@ namespace FreeEDU.Model
 		Account,
 		UsersList,
 		Constructor,
-		RegistrationCourse
+		RegistrationCourse,
+		Requests
 	}
 }

@@ -1,15 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					xmlns:course="clr-namespace:FreeEDU.Model.Course"
-					xmlns:courseItem="clr-namespace:FreeEDU.Model.Course.CourseItem">
+					xmlns:courseItem="clr-namespace:FreeEDU.Model.Course.CourseItem"
+					xmlns:converters="clr-namespace:FreeEDU.Core.Converters">
+	<converters:ImageConverter x:Key="ImageConverter"/>
+	
 
 	<Style x:Key="CourseItem" TargetType="ListBox">
+		<Setter Property="ItemsSource" Value="{Binding CurrentFrame.CourseTheory}"/>
 		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
 		<Setter Property="Margin" Value="15,10,0,10"/>
 		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
 		<Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
 		<Style.Triggers>
 			<DataTrigger Binding="{Binding CurrentFrame.Type}" Value="{x:Static course:CourseFrameType.Theory}">
+				<Setter Property="ItemsSource" Value="{Binding CurrentFrame.CourseTheory}"/>
 				<Setter Property="ItemTemplate">
 					<Setter.Value>
 						<DataTemplate>
@@ -23,18 +28,8 @@
 														<ControlTemplate>
 															<Border Margin="15,0,5,10">
 																<TextBox Text="{Binding Text}"
-																		 TextWrapping="Wrap"/>
-															</Border>
-														</ControlTemplate>
-													</Setter.Value>
-												</Setter>
-											</DataTrigger>
-											<DataTrigger Binding="{Binding ItemType}" Value="{x:Static courseItem:CourseItemType.Image}">
-												<Setter Property="Template">
-													<Setter.Value>
-														<ControlTemplate>
-															<Border HorizontalAlignment="Center">
-																<Image Height="200" Width="500" Stretch="Fill" Source="{Binding Image}"/>
+																		 TextWrapping="Wrap"
+																		 FontSize="24"/>
 															</Border>
 														</ControlTemplate>
 													</Setter.Value>
@@ -49,6 +44,7 @@
 				</Setter>
 			</DataTrigger>
 			<DataTrigger Binding="{Binding CurrentFrame.Type}" Value="{x:Static course:CourseFrameType.Question}">
+				<Setter Property="ItemsSource" Value="{Binding CurrentFrame.CourseQuestions}"/>
 				<Setter Property="ItemTemplate">
 					<Setter.Value>
 						<DataTemplate>
@@ -61,6 +57,7 @@
 										<StackPanel ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 											<TextBox HorizontalContentAlignment="Center"
 													 Text="{Binding Question}"
+													 FontSize="24"
 													 TextWrapping="Wrap"/>
 											<ItemsControl ItemsSource="{Binding Answers}">
 												<ItemsControl.ItemTemplate>
@@ -71,7 +68,8 @@
 															<CheckBox IsChecked="{Binding IsRight}"/>
 															<TextBox Text="{Binding Answer}"
 																	 MaxWidth="350"
-																	 TextWrapping="Wrap"/>
+																	 TextWrapping="Wrap"
+																	 FontSize="20"/>
 														</StackPanel>
 													</DataTemplate>
 												</ItemsControl.ItemTemplate>

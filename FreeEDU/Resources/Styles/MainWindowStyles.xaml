@@ -11,4 +11,36 @@
 		</Setter>
 		<Setter Property="Template" Value="{StaticResource MWTemplate}"/>
 	</Style>
+
+	<Style x:Key="menuStyle" TargetType="ColumnDefinition">
+		<Style.Triggers>
+			<DataTrigger Binding="{Binding ActualWidth}" Value="200">
+				<DataTrigger.EnterActions>
+					<BeginStoryboard>
+						<Storyboard>
+							<ThicknessAnimation Storyboard.TargetProperty="Width" From="0" To="200" Duration="0:0:1"/>
+						</Storyboard>
+					</BeginStoryboard>
+				</DataTrigger.EnterActions>
+			</DataTrigger>
+			<DataTrigger Binding="{Binding ActualWidth}" Value="0">
+				<DataTrigger.EnterActions>
+					<BeginStoryboard>
+						<Storyboard>
+							<ThicknessAnimation Storyboard.TargetProperty="Width" From="200" To="0" Duration="0:0:1"/>
+						</Storyboard>
+					</BeginStoryboard>
+				</DataTrigger.EnterActions>
+			</DataTrigger>
+			<DataTrigger Binding="{Binding ActualWidth}" Value="0">
+				<DataTrigger.EnterActions>
+					<BeginStoryboard>
+						<Storyboard>
+							<ThicknessAnimation Storyboard.TargetProperty="Width" From="200" To="0" Duration="0:0:1"/>
+						</Storyboard>
+					</BeginStoryboard>
+				</DataTrigger.EnterActions>
+			</DataTrigger>
+		</Style.Triggers>
+	</Style>
 </ResourceDictionary>

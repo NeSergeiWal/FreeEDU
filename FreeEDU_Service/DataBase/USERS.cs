@@ -1,4 +1,4 @@
-namespace FreeEDU_Service
+namespace FreeEDU_Service.DataBase
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +8,9 @@ namespace FreeEDU_Service
 
     public partial class USERS
     {
-        [Key]
+        public int Id { get; set; }
+
+        [Required]
         [StringLength(25)]
         public string Login { get; set; }
 
@@ -17,7 +19,7 @@ namespace FreeEDU_Service
         public string Email { get; set; }
 
         [Required]
-        [StringLength(128)]
+        [StringLength(24)]
         public string HashPass { get; set; }
 
         public virtual ACCOUNTS ACCOUNTS { get; set; }

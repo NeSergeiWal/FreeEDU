@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="FreeEDU.Resources.Controls.InputBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FreeEDU.Resources.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Name="inputBox">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../Styles/HitText_style.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+	<Border Height="35" Margin="15,0,5,0"
+				CornerRadius="10"
+				BorderBrush="{StaticResource Brush_input_box}" 
+				BorderThickness="1">
+		<Grid >
+			<TextBox Background="Transparent"
+					 BorderThickness="0"
+				     Margin="5,3"
+					 FontSize="18"
+					 TextChanged="TextBox_TextChanged"
+					 Text="{Binding ElementName=inputBox, Path=Box, Mode=TwoWay}"/>
+
+			<TextBlock x:Name="hitBox"
+					   FontSize="18"
+					   Text="{Binding ElementName=inputBox, Path=HitText}"
+					   Style="{StaticResource HitText}"/>
+		</Grid>
+	</Border>
+</UserControl>

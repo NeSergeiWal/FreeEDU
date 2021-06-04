@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FreeEDU.View.Pages"
 			 xmlns:pageViews="clr-namespace:FreeEDU.Model"
+			 xmlns:controls="clr-namespace:FreeEDU.Resources.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="550">
 
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="../../Resources/Templates/CourseListTemplates/Take_bt_template.xaml"/>
 				<ResourceDictionary Source="../../Resources/Styles/Courses_list_page_style.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
@@ -23,9 +23,25 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 
+		<controls:SearchPanel HorizontalAlignment="Left"/>
+
+		<controls:FiltersPanel HorizontalAlignment="Right"/>
+
 		<ListBox Grid.Row="1"
 				 ItemsSource="{Binding Courses}"
 				 Style="{StaticResource Courses_list}">
+			<ListBox.ItemContainerStyle>
+				<Style TargetType="{x:Type ListBoxItem}">
+					<Setter Property="Background" Value="Transparent" />
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type ListBoxItem}">
+								<ContentPresenter />
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</ListBox.ItemContainerStyle>
 			<ListBox.ItemsPanel>
 				<ItemsPanelTemplate>
 					<WrapPanel HorizontalAlignment="Center" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=Width}"/>

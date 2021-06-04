@@ -1,4 +1,4 @@
-namespace FreeEDU_Service
+namespace FreeEDU_Service.DataBase
 {
     using System;
     using System.Collections.Generic;
@@ -6,16 +6,17 @@ namespace FreeEDU_Service
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class REQUESTS
+    [Table("COMPLETED")]
+    public partial class COMPLETED
     {
-        [Key]
-        [StringLength(25)]
-        public string Login { get; set; }
+        public int Id { get; set; }
 
-        [Required]
-        [StringLength(150)]
-        public string Url { get; set; }
+        public int User_Id { get; set; }
+
+        public int Course_Id { get; set; }
 
         public virtual ACCOUNTS ACCOUNTS { get; set; }
+
+        public virtual COURSES COURSES { get; set; }
     }
 }

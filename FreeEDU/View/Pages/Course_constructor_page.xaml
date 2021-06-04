@@ -26,7 +26,6 @@
 		</Grid.RowDefinitions>
 
 		<ListBox Background="Transparent"
-				 ItemsSource="{Binding CurrentFrame.CourseItems}"
 				 SelectedItem="{Binding SelectedItem}"
 				 Style="{StaticResource CourseItem}"/>
 

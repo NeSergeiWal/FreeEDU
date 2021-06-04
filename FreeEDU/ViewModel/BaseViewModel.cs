@@ -24,6 +24,17 @@ namespace FreeEDU.ViewModel
 			}
 		}
 
+		private static string _errorMsg;
+		public string ErrorMsg
+		{
+			get => _errorMsg;
+			set
+			{
+				_errorMsg = value;
+				OnPropertyChanged("ErrorMsg");
+			}
+		}
+
 		#region CloseAppCommand
 		public RelayCommand CloseAppCommand { get; set; }
 		
@@ -37,7 +48,7 @@ namespace FreeEDU.ViewModel
 		{
 			foreach (Window window in Application.Current.Windows)
 			{
-				if(window.IsActive)
+				if(window.IsVisible)
 				{
 					window.Close();
 					return;

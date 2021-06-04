@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 
 namespace FreeEDU.Model.Course
 {
+	[Serializable]
 	class CourseFrame : ObservableObject
 	{
 		public int Number { get; set; }
 
-		public ObservableCollection<ICourseItem> CourseItems { get; set; }
+		public ObservableCollection<CourseItem.CourseText> CourseTheory { get; set; }
+
+		public ObservableCollection<CourseItem.CourseQuestion> CourseQuestions { get; set; }
 
 		private CourseFrameType _type;
 
@@ -29,7 +32,8 @@ namespace FreeEDU.Model.Course
 
 		public CourseFrame()
 		{
-			CourseItems = new ObservableCollection<ICourseItem>();
+			CourseTheory = new ObservableCollection<CourseItem.CourseText>();
+			CourseQuestions = new ObservableCollection<CourseItem.CourseQuestion>();
 		}
 	}
 }

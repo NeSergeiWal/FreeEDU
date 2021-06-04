@@ -45,10 +45,22 @@ namespace FreeEDU.ViewModel
 				return;
 			}
 
-			FreeEDU_ServiceClient service = new FreeEDU_ServiceClient();
-			var data = service.CreateAcount(Login, Email, MD5Hasher.GetHash(Pass));
+			string[] data = null;
+			try
+			{
+				using (FreeEDU_ServiceClient service = new FreeEDU_ServiceClient())
+				{
+					data = service.CreateAcount(Login, Email, MD5Hasher.GetHash(Pass));
+				}
+			}
+			catch
+			{
+				_WindowVM.ErrorMsg = "Server isn't responding";
+				_WindowVM.ChangePageCommand.Execute(PageViews.Login);
+				return;
+			}
 
-			if(data.Item1 == null)
+			if(data == null)
 			{
 				_WindowVM.ErrorMsg = "Login is already taken";
 				return;
@@ -56,7 +68,7 @@ namespace FreeEDU.ViewModel
 			else
 			{
 				Account account = Account.GetAccount();
-				account.FullSetProps(data.Item1, data.Item2);
+				account.Init(data);
 				MainWindow mainWindow = new MainWindow();
 				_WindowVM.CloseWindowCommand.Execute(null);
 				mainWindow.Show();
@@ -64,12 +76,23 @@ namespace FreeEDU.ViewModel
 		}
 		#endregion
 
+		#region
+		public RelayCommand CanselCommand { get; set; }
+
+		private void DoCansel(object obj)
+		{
+			_WindowVM.CurrentWidth = 300;
+			_WindowVM.ChangePageCommand.Execute(obj);
+		}
+		#endregion
+
 		public RegistrationViewModel(BaseViewModel baseView)
 		{
 			_WindowVM = (LoginWindowViewModel)baseView;
-			Pass = "";
-			Login = "Artem";
+
 			RegistrationCommand = new RelayCommand(DoRegistration);
+			CanselCommand = new RelayCommand(DoCansel);
+			_WindowVM.ErrorMsg = "";
 		}
 	}
 }

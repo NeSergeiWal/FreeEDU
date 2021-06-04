@@ -120,19 +120,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Core\Converters\AdminConverter.cs" />
+    <Compile Include="Core\Converters\CheackResultConverter.cs" />
+    <Compile Include="Core\Converters\DeleteVisibilityConverter.cs" />
     <Compile Include="Core\Converters\ImageConverter.cs" />
     <Compile Include="Core\Converters\RolesConverter.cs" />
+    <Compile Include="Core\Converters\StudentConverter.cs" />
+    <Compile Include="Core\Converters\TeacherConverter.cs" />
     <Compile Include="Core\Converters\ViewModelConverter.cs" />
     <Compile Include="Core\MD5Hasher.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
-    <Compile Include="Core\Serializers\CourseCollectionSerializer.cs" />
     <Compile Include="Core\Validators\CustomValidator.cs" />
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Comment.cs" />
     <Compile Include="Model\Course\Course.cs" />
     <Compile Include="Model\Course\CourseFrame.cs" />
     <Compile Include="Model\Course\CourseFrameType.cs" />
-    <Compile Include="Model\Course\CourseItem\CourseImg.cs" />
+    <Compile Include="Model\Course\CourseItem\CheackResults.cs" />
     <Compile Include="Model\Course\CourseItem\CourseItemType.cs" />
     <Compile Include="Model\Course\CourseItem\CourseQuestion.cs" />
     <Compile Include="Model\Course\CourseItem\CourseText.cs" />
@@ -140,6 +145,7 @@
     <Compile Include="Model\Course\CurrentCourse.cs" />
     <Compile Include="Model\Course\Languages.cs" />
     <Compile Include="Model\PageViews.cs" />
+    <Compile Include="Model\Request.cs" />
     <Compile Include="Model\Roles.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Course\CourseItem\QuestionAnswer.cs" />
@@ -152,8 +158,26 @@
     <Compile Include="Resources\Controls\CourseNavigationPanel.xaml.cs">
       <DependentUpon>CourseNavigationPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Controls\FiltersPanel.xaml.cs">
+      <DependentUpon>FiltersPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Controls\InputBox.xaml.cs">
+      <DependentUpon>InputBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Controls\LoginBox.xaml.cs">
+      <DependentUpon>LoginBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Controls\MainMenuPanel.xaml.cs">
       <DependentUpon>MainMenuPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Controls\MessBox.xaml.cs">
+      <DependentUpon>MessBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Controls\PassBox.xaml.cs">
+      <DependentUpon>PassBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Controls\SearchPanel.xaml.cs">
+      <DependentUpon>SearchPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\Controls\TopUserIcon.xaml.cs">
       <DependentUpon>TopUserIcon.xaml</DependentUpon>
@@ -170,6 +194,7 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\RegistrationCourseViewModel.cs" />
     <Compile Include="ViewModel\RegistrationViewModel.cs" />
+    <Compile Include="ViewModel\RequestsViewModel.cs" />
     <Compile Include="ViewModel\UsersListViewModel.cs" />
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -212,6 +237,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Controls\FiltersPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Controls\InputBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Controls\LoginBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Controls\MessBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Controls\PassBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Controls\SearchPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles\Account_page_style.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -221,6 +270,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\Error_heading_styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\HitText_style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\TextBlock_styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -305,14 +362,6 @@
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Resources\Templates\LoginWindowTemplates\Login_bt_template.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Templates\LoginWindowTemplates\Login_input_box_template.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Templates\LoginWindowTemplates\Login_pass_box_template.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -457,6 +506,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\delete_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\downSort.png" />
+    <Resource Include="Resources\Images\upSort.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

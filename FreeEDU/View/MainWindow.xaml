@@ -7,30 +7,43 @@
 		xmlns:controls="clr-namespace:FreeEDU.Resources.Controls"
         xmlns:ViewModel="clr-namespace:FreeEDU.ViewModel" x:Class="FreeEDU.MainWindow"
         mc:Ignorable="d"
-        Title="FreeEDU" 
-		Height="500" Width="800" 
-		MinHeight="500" MinWidth="800" 
+        Title="FreeEDU"
+		WindowStartupLocation="CenterScreen"
+		Height="700" Width="800" 
+		MinHeight="700" MinWidth="800" 
 		BorderBrush="White" OpacityMask="White" 
+		Icon="..\Resources\Images\icon.png"
 		WindowStyle="None" Style="{StaticResource MWStyle}">
-	<Window.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				
-			</ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>
-	</Window.Resources>
-	
-	
+
+
 	<Window.DataContext>
 		<ViewModel:MainWindowViewModel/>
 	</Window.DataContext>
 
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="{Binding MenuWeidth}"/>
+			<ColumnDefinition Style="{StaticResource menuStyle}" Width="{Binding MenuWeidth}"/>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
+		<controls:MessBox Grid.ColumnSpan="2" Margin="45,-1000,95,0" Grid.IsSharedSizeScope="True"
+						  Box="{Binding ErrorMsg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}">
+			<controls:MessBox.Triggers>
+				<EventTrigger RoutedEvent="Binding.TargetUpdated" SourceName="statusText">
+					<BeginStoryboard>
+						<Storyboard>
+							<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" BeginTime="00:00:00">
+								<SplineThicknessKeyFrame KeyTime="00:00:00" Value="45,-1000,95,0" />
+								<SplineThicknessKeyFrame KeyTime="00:00:01" Value="45,-690,95,0" />
+								<SplineThicknessKeyFrame KeyTime="00:00:03" Value="45,-690,95,0" />
+								<SplineThicknessKeyFrame KeyTime="00:00:04" Value="45,-1000,95,0" />
+							</ThicknessAnimationUsingKeyFrames>
+						</Storyboard>
+					</BeginStoryboard>
+				</EventTrigger>
+			</controls:MessBox.Triggers>
+		</controls:MessBox>
+		
 		<Border BorderThickness="0,0,1,0"
 				BorderBrush="{StaticResource TopPanelBg}">
 			<controls:MainMenuPanel/>

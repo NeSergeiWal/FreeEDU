@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FreeEDU.View.Pages"
 			 xmlns:model="clr-namespace:FreeEDU.Model"
-			 xmlns:corverters="clr-namespace:FreeEDU.Core.Converters"
+			 xmlns:converters="clr-namespace:FreeEDU.Core.Converters"
+			 xmlns:controls="clr-namespace:FreeEDU.Resources.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 	<UserControl.Resources>
@@ -14,17 +15,42 @@
 				<ResourceDictionary Source="../../Resources/Styles/User_list_page_styles.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 
+			<converters:ImageConverter x:Key="ImageConverter"/>
+			
 			<ObjectDataProvider x:Key="MovieDataProvider" MethodName="GetValues" ObjectType="{x:Type model:Roles}">
 				<ObjectDataProvider.MethodParameters>
 					<x:Type Type="model:Roles"/>
 				</ObjectDataProvider.MethodParameters>
 			</ObjectDataProvider>
+
 		</ResourceDictionary>
 	</UserControl.Resources>
 
 	<Grid>
-		<ListBox ItemsSource="{Binding Users}"
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+
+		<controls:SearchPanel HorizontalAlignment="Left"/>
+
+		<controls:FiltersPanel HorizontalAlignment="Right"/>
+
+		<ListBox Grid.Row="1"
+				 ItemsSource="{Binding Users}"
 				 Style="{StaticResource Users_list}">
+			<ListBox.ItemContainerStyle>
+				<Style TargetType="{x:Type ListBoxItem}">
+					<Setter Property="Background" Value="Transparent" />
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type ListBoxItem}">
+								<ContentPresenter />
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</ListBox.ItemContainerStyle>
 			<ListBox.ItemsPanel>
 				<ItemsPanelTemplate>
 					<WrapPanel HorizontalAlignment="Center" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBox}, Path=Width}"/>
@@ -37,18 +63,19 @@
 							<DropShadowEffect Color="{StaticResource List_item_shadow_cl}" BlurRadius="30" ShadowDepth="0"/>
 						</Border.Effect>
 						<Border CornerRadius="15" Background="White">
-							<Grid Height="100" Width="550">
+							<Grid Height="100" MinWidth="550" MaxWidth="650">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="100"/>
 									<ColumnDefinition Width="100"/>
-									<ColumnDefinition Width="150"/>
+									<ColumnDefinition/>
 									<ColumnDefinition Width="100"/>
 									<ColumnDefinition Width="100"/>
 								</Grid.ColumnDefinitions>
 
-								<Ellipse Grid.Column="0" Height="75" Width="75">
+								<Ellipse Grid.Column="0" Height="75" Width="75"
+										 StrokeThickness="2" Stroke="Black">
 									<Ellipse.Fill>
-										<ImageBrush ImageSource="../../Resources/Controls/nesCastle.jpg"/>
+										<ImageBrush ImageSource="{Binding ByteImage, Converter={StaticResource ImageConverter}}"/>
 									</Ellipse.Fill>
 								</Ellipse>
 
@@ -71,9 +98,20 @@
 								  ItemsSource="{Binding Source={StaticResource MovieDataProvider}}">
 								</ComboBox>
 
-								<Button Grid.Column="4"
-							Style="{StaticResource Help_link_bt}"
-							Content="Удалить"/>
+								<StackPanel Grid.Column="4"
+											VerticalAlignment="Center">
+									
+									<Button Style="{StaticResource Help_link_bt}"
+											Content="Edit"
+											Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=DataContext.ChangeRoleCommand}"
+											CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=DataContext}"/>
+									
+									<Button Style="{StaticResource Help_link_bt}"
+											Content="Remove"
+											Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=DataContext.RemoveUserCommand}"
+											CommandParameter="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=DataContext}"/>
+								
+								</StackPanel>
 
 							</Grid>
 						</Border>
